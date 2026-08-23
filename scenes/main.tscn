@@ -8,5 +8,13 @@
 [node name="Baby" parent="." unique_id=1502936678 instance=ExtResource("1_o5qli")]
 position = Vector2(228, 150)
 
+[node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
 [node name="Floor" parent="." unique_id=915760525 instance=ExtResource("2_0wfyh")]
 position = Vector2(22, 342)
+
+[node name="Floor2" parent="." unique_id=779400559 instance=ExtResource("2_0wfyh")]
+position = Vector2(848, 87)
+scale = Vector2(0.25, 1)

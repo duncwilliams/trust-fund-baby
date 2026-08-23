@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://0aibwiyik5ip"]
+
+[ext_resource type="Texture2D" uid="uid://btowpychvtyyd" path="res://art/custom/bottle.png" id="1_724mw"]
+[ext_resource type="Script" uid="uid://cr0mjoxe7bhhc" path="res://scripts/bottle.gd" id="1_qr18b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a0avw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_724mw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bottle" type="Node2D" unique_id=26694295]
+texture_filter = 2
+script = ExtResource("1_qr18b")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1529807745]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_a0avw")
+
+[node name="MuzzlePoint" type="Marker2D" parent="." unique_id=261316996]
+unique_name_in_owner = true
+position = Vector2(15, 0)
+rotation = 1.5707964

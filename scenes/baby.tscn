@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b3qqjq30bm8vd" path="res://art/assets/elthens_baby_sprites/Human Baby Sprite Sheet.png" id="1_k8j53"]
 [ext_resource type="Script" uid="uid://bfwi4h7pwsp8s" path="res://scripts/baby.gd" id="1_wpfv3"]
+[ext_resource type="PackedScene" uid="uid://0aibwiyik5ip" path="res://scenes/bottle.tscn" id="3_ruhsn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpfv3"]
 atlas = ExtResource("1_k8j53")
@@ -96,18 +97,24 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8j53"]
-size = Vector2(8, 13)
+size = Vector2(26, 36)
 
-[node name="Baby" type="CharacterBody2D" unique_id=1502936678]
-scale = Vector2(4, 4)
+[node name="Baby" type="CharacterBody2D" unique_id=1502936678 groups=["baby"]]
 script = ExtResource("1_wpfv3")
 metadata/_edit_group_ = true
 
+[node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]
+position = Vector2(0, -10)
+scale = Vector2(2, 2)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2044264603]
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_c7awe")
 autoplay = "default"
-frame_progress = 0.66362816
+frame_progress = 0.6093312
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1883765674]
-position = Vector2(0, 1.5)
+position = Vector2(-1, 6)
 shape = SubResource("RectangleShape2D_k8j53")
+
+[connection signal="shot_milk" from="Bottle" to="." method="_on_bottle_shot_milk"]
