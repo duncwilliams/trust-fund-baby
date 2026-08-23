@@ -99,9 +99,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8j53"]
 size = Vector2(26, 36)
 
-[node name="Baby" type="CharacterBody2D" unique_id=1502936678]
+[node name="Baby" type="CharacterBody2D" unique_id=1502936678 groups=["baby"]]
 script = ExtResource("1_wpfv3")
 metadata/_edit_group_ = true
+
+[node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]
+position = Vector2(0, -10)
+scale = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2044264603]
 scale = Vector2(3, 3)
@@ -113,5 +117,4 @@ frame_progress = 0.6093312
 position = Vector2(-1, 6)
 shape = SubResource("RectangleShape2D_k8j53")
 
-[node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]
-position = Vector2(0, 6)
+[connection signal="shot_milk" from="Bottle" to="." method="_on_bottle_shot_milk"]
