@@ -114,11 +114,11 @@ sprite_frames = SubResource("SpriteFrames_c7awe")
 autoplay = "default"
 frame_progress = 0.6093312
 
-[node name="CharacterBodyCollision" type="CollisionShape2D" parent="." unique_id=1883765674]
+[node name="CharacterBodyCollision" type="CollisionShape2D" parent="." unique_id=1883765674 groups=["baby"]]
 position = Vector2(2, 6)
 shape = SubResource("RectangleShape2D_k8j53")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1278378837]
+[node name="Area2D" type="Area2D" parent="." unique_id=1278378837 groups=["baby"]]
 
 [node name="AreaCollision" type="CollisionShape2D" parent="Area2D" unique_id=1391482106]
 position = Vector2(0, 6)
