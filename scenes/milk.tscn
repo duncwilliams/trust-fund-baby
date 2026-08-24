@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_yfhl1"]
 radius = 16.0
 
-[node name="Milk" type="Area2D" unique_id=94561853]
+[node name="Milk" type="Area2D" unique_id=94561853 groups=["milk"]]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_b1h7t")
 metadata/_edit_group_ = true

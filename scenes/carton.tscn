@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ckonlikqnpmml"]
+
+[ext_resource type="Texture2D" uid="uid://rlhqvyhmqc46" path="res://art/custom/carton_sprite_sheet.png" id="1_j036i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biyvt"]
+atlas = ExtResource("1_j036i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7dcc"]
+atlas = ExtResource("1_j036i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e524e"]
+atlas = ExtResource("1_j036i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0ehr"]
+atlas = ExtResource("1_j036i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8t5o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_biyvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7dcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e524e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0ehr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j036i"]
+size = Vector2(26, 30)
+
+[node name="Carton" type="Area2D" unique_id=403586504 groups=["carton"]]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1488485544]
+sprite_frames = SubResource("SpriteFrames_i8t5o")
+autoplay = "default"
+frame = 2
+frame_progress = 0.0071633486
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=859354063 groups=["carton"]]
+shape = SubResource("RectangleShape2D_j036i")
