@@ -27,7 +27,6 @@ func _process(delta: float) -> void:
 func refill() -> void:
 	milk_amount = 100
 	milk_amount_changed.emit(milk_amount)
-	print("milk_amount: ", milk_amount)
 
 
 func shoot_milk() -> void:
@@ -39,5 +38,4 @@ func shoot_milk() -> void:
 	milk_amount -= 1
 	shot_milk.emit(milk_launch_angle)
 	milk_amount_changed.emit(milk_amount)
-	print("milk_amount: ", milk_amount)
 	get_tree().create_timer(fire_rate).timeout.connect(func(): can_fire = true)
