@@ -104,6 +104,7 @@ script = ExtResource("1_wpfv3")
 metadata/_edit_group_ = true
 
 [node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]
+unique_name_in_owner = true
 position = Vector2(0, -10)
 scale = Vector2(2, 2)
 
@@ -113,8 +114,17 @@ sprite_frames = SubResource("SpriteFrames_c7awe")
 autoplay = "default"
 frame_progress = 0.6093312
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1883765674]
+[node name="CharacterBodyCollision" type="CollisionShape2D" parent="." unique_id=1883765674]
+visible = false
 position = Vector2(-1, 6)
 shape = SubResource("RectangleShape2D_k8j53")
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1278378837]
+
+[node name="AreaCollision" type="CollisionShape2D" parent="Area2D" unique_id=1391482106]
+position = Vector2(-1, 6)
+shape = SubResource("RectangleShape2D_k8j53")
+
+[connection signal="milk_amount_changed" from="Bottle" to="." method="_on_bottle_milk_amount_changed"]
 [connection signal="shot_milk" from="Bottle" to="." method="_on_bottle_shot_milk"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

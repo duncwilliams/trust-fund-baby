@@ -1,13 +1,13 @@
 extends Node2D
 
 signal shot_milk(launch_angle: Vector2)
+signal milk_amount_changed(new_milk_amount: int)
 
 var milk_scene: PackedScene = preload("res://scenes/milk.tscn")
-var milk_launch_speed: float = 200.0
+var milk_launch_speed: float = 500.0
 var fire_rate: float = 0.02
 var can_fire: bool = true
-
-var milk_amount = 100
+var milk_amount: int = 100
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
@@ -15,6 +15,11 @@ func _process(delta: float) -> void:
 	if (Input.is_action_pressed("shoot_milk") and can_fire and milk_amount > 0):
 		can_fire = false
 		shoot_milk()
+
+
+func refill() -> void:
+	milk_amount = 100
+	milk_amount_changed.emit(milk_amount)
 
 
 func shoot_milk() -> void:
@@ -25,4 +30,5 @@ func shoot_milk() -> void:
 	milk.launch(milk_launch_angle, milk_launch_speed)
 	milk_amount -= 1
 	shot_milk.emit(milk_launch_angle)
+	milk_amount_changed.emit(milk_amount)
 	get_tree().create_timer(fire_rate).timeout.connect(func(): can_fire = true)
