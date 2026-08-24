@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal milk_amount_changed(new_milk_amount: int)
 
 @onready var bottle: Node2D = %Bottle
-var thrust_force: float = 15
+var thrust_force: float = 20
 var max_velocity: float = 600
 
 func _physics_process(delta: float) -> void:
