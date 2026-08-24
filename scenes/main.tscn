@@ -1,14 +1,35 @@
 [gd_scene format=3 uid="uid://b7ipudmeyhytw"]
 
 [ext_resource type="PackedScene" uid="uid://cvow3q04r05rf" path="res://scenes/baby.tscn" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://baaejrnx78nik" path="res://scenes/floor.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://ce0h2p4pyj5l" path="res://scenes/hud.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://ckonlikqnpmml" path="res://scenes/carton.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bma0jh32ox7pj" path="res://scenes/map.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Node2D" unique_id=246328731]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=75541172]
+layer = -100
+
+[node name="BackgroundControl" type="Control" parent="CanvasLayer" unique_id=333866390]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundColor" type="ColorRect" parent="CanvasLayer/BackgroundControl" unique_id=1349762040]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24705882, 0.21960784, 0.31764707, 1)
+
+[node name="Map" parent="." unique_id=1817902467 instance=ExtResource("5_tbgi4")]
+
 [node name="Baby" parent="." unique_id=1502936678 instance=ExtResource("1_o5qli")]
-position = Vector2(228, 150)
+position = Vector2(576, 324)
 
 [node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
 drag_horizontal_enabled = true
@@ -18,16 +39,6 @@ drag_top_margin = 0.13
 drag_right_margin = 0.13
 drag_bottom_margin = 0.13
 
-[node name="Floor" parent="." unique_id=915760525 instance=ExtResource("2_0wfyh")]
-position = Vector2(22, 342)
-
-[node name="Floor2" parent="." unique_id=779400559 instance=ExtResource("2_0wfyh")]
-position = Vector2(848, 87)
-scale = Vector2(0.25, 1)
-
 [node name="Hud" parent="." unique_id=1539706795 instance=ExtResource("3_sugp2")]
-
-[node name="Carton" parent="." unique_id=403586504 instance=ExtResource("4_jyhfs")]
-position = Vector2(931, 14)
 
 [connection signal="milk_amount_changed" from="Baby" to="Hud" method="_on_baby_milk_amount_changed"]
