@@ -1,29 +1,80 @@
 [gd_scene format=3 uid="uid://0aibwiyik5ip"]
 
-[ext_resource type="Texture2D" uid="uid://btowpychvtyyd" path="res://art/custom/bottle.png" id="1_724mw"]
 [ext_resource type="Script" uid="uid://cr0mjoxe7bhhc" path="res://scripts/bottle.gd" id="1_qr18b"]
-[ext_resource type="Texture2D" uid="uid://k3gnfr4hnac7" path="res://art/custom/Milk_Bottle.png" id="2_emwc0"]
+[ext_resource type="Texture2D" uid="uid://chf6q00tnb1an" path="res://art/custom/Milk_Bottle_levels-sheet_tweaked.png" id="2_qr18b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emwc0"]
+atlas = ExtResource("2_qr18b")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_137t8"]
-atlas = ExtResource("2_emwc0")
+atlas = ExtResource("2_qr18b")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2db8"]
+atlas = ExtResource("2_qr18b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxwgf"]
+atlas = ExtResource("2_qr18b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gns2f"]
+atlas = ExtResource("2_qr18b")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb5ox"]
+atlas = ExtResource("2_qr18b")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a0avw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_137t8")
+"texture": SubResource("AtlasTexture_emwc0")
 }],
-"loop": true,
-"name": &"default",
+"loop": false,
+"name": &"1_plus",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_724mw")
+"texture": SubResource("AtlasTexture_137t8")
 }],
-"loop": true,
-"name": &"old_default",
+"loop": false,
+"name": &"25_plus",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2db8")
+}],
+"loop": false,
+"name": &"50_plus",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxwgf")
+}],
+"loop": false,
+"name": &"75_plus",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gns2f")
+}],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb5ox")
+}],
+"loop": false,
+"name": &"full",
 "speed": 5.0
 }]
 
@@ -33,8 +84,10 @@ script = ExtResource("1_qr18b")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1529807745]
+unique_name_in_owner = true
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_a0avw")
+animation = &"1_plus"
 
 [node name="MuzzlePoint" type="Marker2D" parent="." unique_id=261316996]
 unique_name_in_owner = true

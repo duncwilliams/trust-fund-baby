@@ -33,6 +33,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		currently_firing = false
 		fire_accumulator = 0.0
+	
+	# sprite handling
+	if milk_amount == 100:
+		$AnimatedSprite2D.play("full")
+	elif milk_amount >= 75:
+		$AnimatedSprite2D.play("75_plus")
+	elif milk_amount >= 50:
+		$AnimatedSprite2D.play("50_plus")
+	elif milk_amount >= 25:
+		$AnimatedSprite2D.play("25_plus")
+	elif milk_amount >= 1:
+		$AnimatedSprite2D.play("1_plus")
+	else:
+		$AnimatedSprite2D.play("empty")
 
 
 func refill() -> void:

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://k3gnfr4hnac7"
-path="res://.godot/imported/Milk_Bottle.png-59f58bba8c177f12de34073dca035529.ctex"
+path="res://.godot/imported/Milk_Bottle.png-4767340ec7998e761a31f0b6ffa913fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/custom/Milk_Bottle.png"
-dest_files=["res://.godot/imported/Milk_Bottle.png-59f58bba8c177f12de34073dca035529.ctex"]
+source_file="res://art/custom/old/Milk_Bottle.png"
+dest_files=["res://.godot/imported/Milk_Bottle.png-4767340ec7998e761a31f0b6ffa913fc.ctex"]
 
 [params]
 
