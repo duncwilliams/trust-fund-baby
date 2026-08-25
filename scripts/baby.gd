@@ -7,6 +7,7 @@ var thrust_force: float = 15
 var max_velocity: float = 700
 var bounce_strength: float = 0.5
 
+
 func _physics_process(delta: float) -> void:
 	# sprite orientation
 	$AnimatedSprite2D.flip_h = (velocity.x < 0)
@@ -23,9 +24,15 @@ func milk_thrust(thrust_angle: Vector2) -> void:
 	velocity = velocity.limit_length(max_velocity)
 
 
+func refill_bottle():
+	bottle.refill()
+
+func empty_bottle():
+	bottle.empty()
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("carton"):
-		bottle.refill()
+		refill_bottle()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -43,7 +50,3 @@ func _on_bottle_milk_amount_changed(new_milk_amount: int) -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	$AnimatedSprite2D.play("default")
-
-
-func _on_map_arrived_at_second_floor() -> void:
-	bottle.refill()

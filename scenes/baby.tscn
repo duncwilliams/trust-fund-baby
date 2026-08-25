@@ -57,7 +57,6 @@ unique_name_in_owner = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2044264603]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_c7awe")
-animation = &"collide"
 autoplay = "default"
 
 [node name="CharacterBodyCollision" type="CollisionShape2D" parent="." unique_id=1883765674 groups=["baby"]]

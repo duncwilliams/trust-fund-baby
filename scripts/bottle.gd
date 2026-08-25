@@ -12,6 +12,7 @@ var milk_amount: int = 100
 var fire_accumulator: float = 0.0
 var drain_accumulator: float = 0.0
 
+
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 
@@ -36,6 +37,11 @@ func _physics_process(delta: float) -> void:
 
 func refill() -> void:
 	milk_amount = 100
+	milk_amount_changed.emit(milk_amount)
+
+
+func empty() -> void:
+	milk_amount = 0
 	milk_amount_changed.emit(milk_amount)
 
 
