@@ -3,12 +3,12 @@ extends CharacterBody2D
 signal milk_amount_changed(new_milk_amount: int)
 
 @onready var bottle: Node2D = %Bottle
-var thrust_force: float = 20
+var thrust_force: float = 15
 var max_velocity: float = 600
 
 func _physics_process(delta: float) -> void:
 	# gravity
-	if (not is_on_floor() and not bottle.currently_firing) :
+	if ((not is_on_floor()) and (not bottle.currently_firing)) :
 		velocity += get_gravity() * delta
 	
 	move_and_slide()
@@ -24,9 +24,19 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		area.queue_free()
 		bottle.refill()
 
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("map"):
+		$AnimatedSprite2D.play("collide")
+
+
 func _on_bottle_shot_milk(milk_launch_angle: Vector2) -> void:
 	milk_thrust(-milk_launch_angle)
 
 
 func _on_bottle_milk_amount_changed(new_milk_amount: int) -> void:
 	milk_amount_changed.emit(new_milk_amount)
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$AnimatedSprite2D.play("default")

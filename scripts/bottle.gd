@@ -5,23 +5,33 @@ signal milk_amount_changed(new_milk_amount: int)
 
 var milk_scene: PackedScene = preload("res://scenes/milk.tscn")
 var milk_launch_speed: float = 500.0
-var fire_rate: float = 0.02
-var can_fire: bool = true
-var currently_firing = false
+var shots_per_second: float = 60.0
+var drain_per_second: float = 40.0
+var currently_firing: bool = false
 var milk_amount: int = 100
+var fire_accumulator: float = 0.0
+var drain_accumulator: float = 0.0
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
-	
-	if (Input.is_action_pressed("shoot_milk") and milk_amount > 0):
-		# set currently_firing to true to temporarily disable gravity while BLASTING off
+
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("shoot_milk") and milk_amount > 0:
 		currently_firing = true
-		if can_fire:
-			# set can_fire to false so that it can't fire again until fire rate cooldown at end of shoot_milk()
-			can_fire = false
+
+		fire_accumulator += shots_per_second * delta
+		while fire_accumulator >= 1.0:
+			fire_accumulator -= 1.0
 			shoot_milk()
+
+		drain_accumulator += drain_per_second * delta
+		while drain_accumulator >= 1.0 and milk_amount > 0:
+			drain_accumulator -= 1.0
+			drain_milk()
 	else:
 		currently_firing = false
+		fire_accumulator = 0.0
 
 
 func refill() -> void:
@@ -35,7 +45,9 @@ func shoot_milk() -> void:
 	milk.global_position = %MuzzlePoint.global_position
 	var milk_launch_angle = Vector2.RIGHT.rotated(rotation)
 	milk.launch(milk_launch_angle, milk_launch_speed)
-	milk_amount -= 1
 	shot_milk.emit(milk_launch_angle)
+
+
+func drain_milk() -> void:
+	milk_amount -= 1
 	milk_amount_changed.emit(milk_amount)
-	get_tree().create_timer(fire_rate).timeout.connect(func(): can_fire = true)
