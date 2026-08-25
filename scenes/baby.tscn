@@ -9,10 +9,6 @@
 atlas = ExtResource("4_40ld7")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cgpd6"]
-atlas = ExtResource("4_40ld7")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhev3"]
 atlas = ExtResource("3_3hpsf")
 region = Rect2(0, 0, 32, 32)
@@ -26,9 +22,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7xqix")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cgpd6")
 }],
 "loop": false,
 "name": &"collide",
@@ -53,6 +46,7 @@ size = Vector2(22, 28.5)
 size = Vector2(25, 29.5)
 
 [node name="Baby" type="CharacterBody2D" unique_id=1502936678 groups=["baby"]]
+z_index = 10
 scale = Vector2(2, 2)
 script = ExtResource("1_wpfv3")
 metadata/_edit_group_ = true

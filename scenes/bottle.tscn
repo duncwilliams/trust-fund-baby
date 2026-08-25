@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [node name="Bottle" type="Node2D" unique_id=26694295]
-texture_filter = 2
+texture_filter = 1
 script = ExtResource("1_qr18b")
 metadata/_edit_group_ = true
 

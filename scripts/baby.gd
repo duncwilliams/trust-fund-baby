@@ -5,9 +5,13 @@ signal milk_amount_changed(new_milk_amount: int)
 @onready var bottle: Node2D = %Bottle
 var thrust_force: float = 15
 var max_velocity: float = 700
+var bounce_strength: float = 0.5
 
 func _physics_process(delta: float) -> void:
-	# gravity
+	# sprite orientation
+	$AnimatedSprite2D.flip_h = (velocity.x < 0)
+	
+	# gravity and physics
 	if ((not is_on_floor()) and (not bottle.currently_firing)) :
 		velocity += get_gravity() * delta
 	
@@ -39,3 +43,7 @@ func _on_bottle_milk_amount_changed(new_milk_amount: int) -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	$AnimatedSprite2D.play("default")
+
+
+func _on_map_arrived_at_second_floor() -> void:
+	bottle.refill()

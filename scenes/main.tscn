@@ -32,7 +32,7 @@ color = Color(0.24705882, 0.21960784, 0.31764707, 1)
 metadata/_edit_lock_ = true
 
 [node name="Baby" parent="." unique_id=1502936678 instance=ExtResource("1_o5qli")]
-position = Vector2(1744, -1339)
+position = Vector2(1290, -2404)
 
 [node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
 offset = Vector2(0, -60)
@@ -49,4 +49,5 @@ drag_bottom_margin = 0.13
 visible = false
 position = Vector2(382, 345)
 
+[connection signal="arrived_at_second_floor" from="Map" to="Baby" method="_on_map_arrived_at_second_floor"]
 [connection signal="milk_amount_changed" from="Baby" to="Hud" method="_on_baby_milk_amount_changed"]
