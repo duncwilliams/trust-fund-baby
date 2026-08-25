@@ -14,6 +14,7 @@ var still_typing: bool = false
 
 
 func play_second_floor_dialogue():
+	visible = true
 	print("playing second floor dialogue")
 	get_tree().paused = true
 	line_index = 0
@@ -32,16 +33,11 @@ func display_next_line(index: int):
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("advance_dialogue"):
-		if still_typing:
-			# show full line of dialogue immediately
-			dialogue_text_label.visible_ratio = 1.0
-			still_typing = false
+	if event.is_action_pressed("advance_dialogue") and not still_typing:
+		line_index += 1
+		if line_index < current_lines.size():
+			display_next_line(line_index)
 		else:
-			line_index += 1
-			if line_index < current_lines.size():
-				display_next_line(line_index)
-			else:
-				get_tree().paused = false
-				queue_free()
+			get_tree().paused = false
+			visible = false
 			
