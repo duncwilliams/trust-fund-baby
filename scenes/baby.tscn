@@ -1,69 +1,37 @@
 [gd_scene format=3 uid="uid://cvow3q04r05rf"]
 
-[ext_resource type="Texture2D" uid="uid://b3qqjq30bm8vd" path="res://art/assets/elthens_baby_sprites/Human Baby Sprite Sheet.png" id="1_k8j53"]
 [ext_resource type="Script" uid="uid://bfwi4h7pwsp8s" path="res://scripts/baby.gd" id="1_wpfv3"]
+[ext_resource type="Texture2D" uid="uid://cl67245y3aw5r" path="res://art/custom/big_baby.png" id="3_3hpsf"]
 [ext_resource type="PackedScene" uid="uid://0aibwiyik5ip" path="res://scenes/bottle.tscn" id="3_ruhsn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wpfv3"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(0, 80, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ruhsn"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(32, 80, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3hpsf"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(64, 80, 32, 16)
+[ext_resource type="Texture2D" uid="uid://8kd3trjbjase" path="res://art/custom/big_baby_v2.png" id="4_3hpsf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40ld7"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(96, 80, 32, 16)
+atlas = ExtResource("3_3hpsf")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhev3"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(128, 80, 32, 16)
+atlas = ExtResource("3_3hpsf")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_snfag"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(160, 80, 32, 16)
+atlas = ExtResource("3_3hpsf")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgpd6"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(192, 80, 32, 16)
+atlas = ExtResource("3_3hpsf")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xqix"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(224, 80, 32, 16)
+atlas = ExtResource("4_3hpsf")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbq4s"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(256, 80, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gnfnd"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(288, 80, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3p3ry"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(320, 80, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nl4ao"]
-atlas = ExtResource("1_k8j53")
-region = Rect2(352, 80, 32, 16)
+atlas = ExtResource("4_3hpsf")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c7awe"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wpfv3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ruhsn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3hpsf")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_40ld7")
 }, {
@@ -75,55 +43,47 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cgpd6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7xqix")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dbq4s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gnfnd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3p3ry")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nl4ao")
 }],
 "loop": true,
-"name": &"default",
-"speed": 8.0
+"name": &"default_v2",
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8j53"]
-size = Vector2(32, 52)
+size = Vector2(24, 28)
 
 [node name="Baby" type="CharacterBody2D" unique_id=1502936678 groups=["baby"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_wpfv3")
 metadata/_edit_group_ = true
 
 [node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]
 unique_name_in_owner = true
-position = Vector2(0, -10)
-scale = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2044264603]
-scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_c7awe")
 autoplay = "default"
-frame_progress = 0.6093312
+frame_progress = 0.8211956
 
 [node name="CharacterBodyCollision" type="CollisionShape2D" parent="." unique_id=1883765674 groups=["baby"]]
-visible = false
-position = Vector2(2, 6)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_k8j53")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1278378837 groups=["baby"]]
-visible = false
 
 [node name="AreaCollision" type="CollisionShape2D" parent="Area2D" unique_id=1391482106]
-position = Vector2(0, 6)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_k8j53")
 
 [connection signal="milk_amount_changed" from="Bottle" to="." method="_on_bottle_milk_amount_changed"]
