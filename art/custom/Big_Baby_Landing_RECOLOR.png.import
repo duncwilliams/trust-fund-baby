@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl67245y3aw5r"
-path="res://.godot/imported/big_baby.png-cd4f1ece4a88e6106b7fe99063d93257.ctex"
+uid="uid://c1vdirs7533ed"
+path="res://.godot/imported/Big_Baby_Landing_RECOLOR.png-2bc82fa8832222690253434dcce59ab2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/custom/big_baby.png"
-dest_files=["res://.godot/imported/big_baby.png-cd4f1ece4a88e6106b7fe99063d93257.ctex"]
+source_file="res://art/custom/Big_Baby_Landing_RECOLOR.png"
+dest_files=["res://.godot/imported/Big_Baby_Landing_RECOLOR.png-2bc82fa8832222690253434dcce59ab2.ctex"]
 
 [params]
 
