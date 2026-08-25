@@ -970,6 +970,9 @@ tile_set = SubResource("TileSet_gldc4")
 
 [node name="Cartons" type="Node2D" parent="." unique_id=280399400]
 
+[node name="Carton5" parent="Cartons" unique_id=736468841 instance=ExtResource("2_paxxb")]
+position = Vector2(113, 451)
+
 [node name="Carton" parent="Cartons" unique_id=403586504 instance=ExtResource("2_paxxb")]
 position = Vector2(1852, -124)
 
@@ -982,8 +985,14 @@ position = Vector2(1794, -1354)
 [node name="Carton4" parent="Cartons" unique_id=1461498588 instance=ExtResource("2_paxxb")]
 position = Vector2(1400, -2300)
 
-[node name="Carton5" parent="Cartons" unique_id=736468841 instance=ExtResource("2_paxxb")]
-position = Vector2(113, 451)
+[node name="Carton6" parent="Cartons" unique_id=1501727220 instance=ExtResource("2_paxxb")]
+position = Vector2(1283, -2784)
+
+[node name="Carton7" parent="Cartons" unique_id=1497406662 instance=ExtResource("2_paxxb")]
+position = Vector2(1399, -2784)
+
+[node name="Carton8" parent="Cartons" unique_id=211967417 instance=ExtResource("2_paxxb")]
+position = Vector2(1516, -2784)
 
 [node name="Arrows" type="Node2D" parent="." unique_id=823208113]
 

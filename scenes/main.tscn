@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cvow3q04r05rf" path="res://scenes/baby.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ce0h2p4pyj5l" path="res://scenes/hud.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bma0jh32ox7pj" path="res://scenes/map.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dxhgehgl2qp1" path="res://scenes/enemy.tscn" id="5_tefeu"]
 
 [node name="Main" type="Node2D" unique_id=246328731]
 script = ExtResource("1_jyhfs")
@@ -33,7 +34,7 @@ metadata/_edit_lock_ = true
 
 [node name="Baby" parent="." unique_id=1502936678 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true
-position = Vector2(1693, -1361)
+position = Vector2(258, 370)
 
 [node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
 offset = Vector2(0, -60)
@@ -50,6 +51,10 @@ unique_name_in_owner = true
 [node name="BabySpawnPoint" type="Marker2D" parent="." unique_id=987459998]
 visible = false
 position = Vector2(382, 345)
+
+[node name="Enemy" parent="." unique_id=1988915028 node_paths=PackedStringArray("baby") instance=ExtResource("5_tefeu")]
+position = Vector2(708, -3528)
+baby = NodePath("../Baby")
 
 [connection signal="arrived_at_second_floor" from="Map" to="." method="_on_map_arrived_at_second_floor"]
 [connection signal="milk_amount_changed" from="Baby" to="Hud" method="_on_baby_milk_amount_changed"]
