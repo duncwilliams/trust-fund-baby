@@ -21,7 +21,6 @@ func milk_thrust(thrust_angle: Vector2) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("carton"):
-		area.queue_free()
 		bottle.refill()
 
 

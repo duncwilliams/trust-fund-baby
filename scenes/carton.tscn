@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ckonlikqnpmml"]
 
 [ext_resource type="Texture2D" uid="uid://rlhqvyhmqc46" path="res://art/custom/carton_sprite_sheet.png" id="1_j036i"]
+[ext_resource type="Script" uid="uid://d3vpelwce0l3c" path="res://scripts/carton.gd" id="1_u7dcc"]
+[ext_resource type="Texture2D" uid="uid://dgko4ex0qlvj7" path="res://art/custom/carton_respawn.png" id="2_biyvt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_biyvt"]
 atlas = ExtResource("1_j036i")
@@ -17,6 +19,26 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0ehr"]
 atlas = ExtResource("1_j036i")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8t5o"]
+atlas = ExtResource("2_biyvt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4iof"]
+atlas = ExtResource("2_biyvt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4q0t"]
+atlas = ExtResource("2_biyvt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0wu0"]
+atlas = ExtResource("2_biyvt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pldgj"]
+atlas = ExtResource("2_biyvt")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8t5o"]
 animations = [{
@@ -36,6 +58,26 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8t5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4iof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4q0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0wu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pldgj")
+}],
+"loop": false,
+"name": &"respawning",
+"speed": 1.5
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j036i"]
@@ -43,12 +85,19 @@ size = Vector2(26, 30)
 
 [node name="Carton" type="Area2D" unique_id=403586504 groups=["carton"]]
 scale = Vector2(2, 2)
+script = ExtResource("1_u7dcc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1488485544]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_i8t5o")
+animation = &"respawning"
 autoplay = "default"
-frame = 2
-frame_progress = 0.0071633486
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=859354063 groups=["carton"]]
 shape = SubResource("RectangleShape2D_j036i")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
