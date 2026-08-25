@@ -4,7 +4,7 @@ signal milk_amount_changed(new_milk_amount: int)
 
 @onready var bottle: Node2D = %Bottle
 var thrust_force: float = 15
-var max_velocity: float = 700
+var max_velocity: float = 620
 var bounce_strength: float = 0.5
 
 
