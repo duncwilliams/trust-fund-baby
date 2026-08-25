@@ -7,7 +7,7 @@
 radius = 16.0
 
 [node name="Milk" type="Area2D" unique_id=94561853 groups=["milk"]]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_b1h7t")
 metadata/_edit_group_ = true
 

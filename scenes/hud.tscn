@@ -5,7 +5,7 @@
 [node name="Hud" type="CanvasLayer" unique_id=1539706795]
 script = ExtResource("1_ahhtf")
 
-[node name="Control" type="Control" parent="." unique_id=327947113]
+[node name="MilkMeterControl" type="Control" parent="." unique_id=327947113]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -17,25 +17,25 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="MilkMeterTitle" type="Label" parent="Control" unique_id=43019739]
+[node name="MilkMeterTitle" type="Label" parent="MilkMeterControl" unique_id=43019739]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -230.0
-offset_top = -155.0
-offset_right = -96.0
-offset_bottom = -133.99995
+offset_left = -336.0
+offset_top = -174.00002
+offset_right = -34.0
+offset_bottom = -127.000015
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(1.4, 1.4)
+theme_override_font_sizes/font_size = 36
 text = "MILK METER™ "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MilkMeterStat" type="Label" parent="Control/MilkMeterTitle" unique_id=1233565953]
+[node name="MilkMeterStat" type="Label" parent="MilkMeterControl/MilkMeterTitle" unique_id=1233565953]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -43,13 +43,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.57141
-offset_top = 8.785692
-offset_right = -1.5714035
-offset_bottom = 29.785736
+offset_left = -97.0
+offset_top = 14.5
+offset_right = 37.0
+offset_bottom = 76.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.8, 1.8)
+theme_override_font_sizes/font_size = 48
 text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartPrompt" type="Label" parent="." unique_id=259127323]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -20.5
+offset_right = 194.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Press R to Restart"
 horizontal_alignment = 1
 vertical_alignment = 1

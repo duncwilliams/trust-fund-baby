@@ -97,7 +97,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8j53"]
-size = Vector2(26, 36)
+size = Vector2(32, 52)
 
 [node name="Baby" type="CharacterBody2D" unique_id=1502936678 groups=["baby"]]
 script = ExtResource("1_wpfv3")
@@ -109,20 +109,21 @@ position = Vector2(0, -10)
 scale = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2044264603]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_c7awe")
 autoplay = "default"
 frame_progress = 0.6093312
 
-[node name="CharacterBodyCollision" type="CollisionShape2D" parent="." unique_id=1883765674]
+[node name="CharacterBodyCollision" type="CollisionShape2D" parent="." unique_id=1883765674 groups=["baby"]]
 visible = false
-position = Vector2(-1, 6)
+position = Vector2(2, 6)
 shape = SubResource("RectangleShape2D_k8j53")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1278378837]
+[node name="Area2D" type="Area2D" parent="." unique_id=1278378837 groups=["baby"]]
+visible = false
 
 [node name="AreaCollision" type="CollisionShape2D" parent="Area2D" unique_id=1391482106]
-position = Vector2(-1, 6)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_k8j53")
 
 [connection signal="milk_amount_changed" from="Bottle" to="." method="_on_bottle_milk_amount_changed"]
