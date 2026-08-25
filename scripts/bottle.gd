@@ -12,7 +12,9 @@ var milk_amount: int = 100
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
-	
+
+
+func _physics_process(delta: float) -> void:
 	if (Input.is_action_pressed("shoot_milk") and milk_amount > 0):
 		# set currently_firing to true to temporarily disable gravity while BLASTING off
 		currently_firing = true
