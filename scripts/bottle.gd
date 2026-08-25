@@ -6,7 +6,7 @@ signal milk_amount_changed(new_milk_amount: int)
 var milk_scene: PackedScene = preload("res://scenes/milk.tscn")
 var milk_launch_speed: float = 500.0
 var shots_per_second: float = 60.0
-var drain_per_second: float = 35.0
+var drain_per_second: float = 40.0
 var currently_firing: bool = false
 var milk_amount: int = 100
 var fire_accumulator: float = 0.0
