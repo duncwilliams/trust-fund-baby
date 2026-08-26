@@ -1,9 +1,7 @@
 extends CharacterBody2D
 
-
-@export var baby: Node2D
-var speed: float = 20.0
-
+@onready var baby: Node2D = get_tree().get_first_node_in_group("baby")
+var speed: float = 5.0
 
 
 func _physics_process(delta: float) -> void:
@@ -20,9 +18,6 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	var distance := global_position.distance_squared_to(baby.global_position)
-	print("baby is ", distance, " away from enemy")
-	
 	var direction := global_position.direction_to(baby.global_position)
-	velocity = direction * speed
-	#move_and_slide()
+	velocity += direction * speed
+	move_and_slide()

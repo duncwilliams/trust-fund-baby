@@ -1,5 +1,7 @@
 extends Control
 
+signal dialogue_finished(dialogue_title: String)
+
 @onready var dialogue_text_label: RichTextLabel = %DialogueTextLabel
 # hoping to make this scene and script work with multiple different dialogue lines sets if possible later
 var second_floor_lines: Array[String] = [
@@ -8,6 +10,7 @@ var second_floor_lines: Array[String] = [
 	"probably don't even know 1 + 1 for that matter",
 	"I'm gonna beat your ass and steal your fortune"
 ]
+var current_dialogue_title: String = ""
 var current_lines: Array[String] = []
 var line_index: int = 0
 var still_typing: bool = false
@@ -18,6 +21,7 @@ func play_second_floor_dialogue():
 	print("playing second floor dialogue")
 	get_tree().paused = true
 	line_index = 0
+	current_dialogue_title = "second floor"
 	current_lines = second_floor_lines
 	display_next_line(line_index)
 
@@ -40,4 +44,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			get_tree().paused = false
 			visible = false
-			
+			if current_dialogue_title == "second floor":
+				dialogue_finished.emit(current_dialogue_title)

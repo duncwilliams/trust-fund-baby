@@ -8,6 +8,7 @@
 
 [node name="Main" type="Node2D" unique_id=246328731]
 script = ExtResource("1_jyhfs")
+second_floor_enemy_scene = ExtResource("5_tefeu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=75541172]
 layer = -100
@@ -34,7 +35,7 @@ metadata/_edit_lock_ = true
 
 [node name="Baby" parent="." unique_id=1502936678 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true
-position = Vector2(258, 370)
+position = Vector2(1363, -2415)
 
 [node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
 offset = Vector2(0, -60)
@@ -52,9 +53,10 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(382, 345)
 
-[node name="Enemy" parent="." unique_id=1988915028 node_paths=PackedStringArray("baby") instance=ExtResource("5_tefeu")]
-position = Vector2(708, -3528)
-baby = NodePath("../Baby")
+[node name="SecondFloorEnemySpawnPoint" type="Marker2D" parent="." unique_id=1066116042]
+unique_name_in_owner = true
+position = Vector2(963, -3580)
 
 [connection signal="arrived_at_second_floor" from="Map" to="." method="_on_map_arrived_at_second_floor"]
 [connection signal="milk_amount_changed" from="Baby" to="Hud" method="_on_baby_milk_amount_changed"]
+[connection signal="dialogue_finished" from="Hud" to="." method="_on_hud_dialogue_finished"]

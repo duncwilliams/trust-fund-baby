@@ -78,3 +78,5 @@ vertical_alignment = 1
 
 [node name="DialogueController" parent="." unique_id=1229814285 instance=ExtResource("2_oo0fn")]
 unique_name_in_owner = true
+
+[connection signal="dialogue_finished" from="DialogueController" to="." method="_on_dialogue_controller_dialogue_finished"]

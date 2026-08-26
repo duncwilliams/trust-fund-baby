@@ -994,6 +994,12 @@ position = Vector2(1399, -2784)
 [node name="Carton8" parent="Cartons" unique_id=211967417 instance=ExtResource("2_paxxb")]
 position = Vector2(1516, -2784)
 
+[node name="Carton9" parent="Cartons" unique_id=1909159537 instance=ExtResource("2_paxxb")]
+position = Vector2(703, -3452)
+
+[node name="Carton10" parent="Cartons" unique_id=1321947780 instance=ExtResource("2_paxxb")]
+position = Vector2(2121, -3451)
+
 [node name="Arrows" type="Node2D" parent="." unique_id=823208113]
 
 [node name="DiagonalArrow" type="Sprite2D" parent="Arrows" unique_id=1084429190]
