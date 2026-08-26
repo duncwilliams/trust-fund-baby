@@ -1,8 +1,14 @@
 extends CanvasLayer
 
-var restart_prompt_delay: int = 2
+signal dialogue_finished(dialogue_title: String)
+
+var restart_prompt_delay: int = 3
 # backup milk counter purely for making sure restart prompt doesn't display after player collected a carton
 var current_milk_amount: int = 100
+
+func play_second_floor_dialogue():
+	$DialogueController.play_second_floor_dialogue()
+
 
 func _on_baby_milk_amount_changed(new_milk_amount: int) -> void:
 	current_milk_amount = new_milk_amount
@@ -14,3 +20,7 @@ func _on_baby_milk_amount_changed(new_milk_amount: int) -> void:
 			$RestartPrompt.visible = true
 	else:
 		$RestartPrompt.visible = false
+
+
+func _on_dialogue_controller_dialogue_finished(dialogue_title: String) -> void:
+		dialogue_finished.emit(dialogue_title)

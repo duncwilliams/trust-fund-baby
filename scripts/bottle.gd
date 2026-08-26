@@ -12,6 +12,7 @@ var milk_amount: int = 100
 var fire_accumulator: float = 0.0
 var drain_accumulator: float = 0.0
 
+
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 
@@ -32,10 +33,29 @@ func _physics_process(delta: float) -> void:
 	else:
 		currently_firing = false
 		fire_accumulator = 0.0
+	
+	# sprite handling
+	if milk_amount == 100:
+		$AnimatedSprite2D.play("full")
+	elif milk_amount >= 75:
+		$AnimatedSprite2D.play("75_plus")
+	elif milk_amount >= 50:
+		$AnimatedSprite2D.play("50_plus")
+	elif milk_amount >= 25:
+		$AnimatedSprite2D.play("25_plus")
+	elif milk_amount >= 1:
+		$AnimatedSprite2D.play("1_plus")
+	else:
+		$AnimatedSprite2D.play("empty")
 
 
 func refill() -> void:
 	milk_amount = 100
+	milk_amount_changed.emit(milk_amount)
+
+
+func empty() -> void:
+	milk_amount = 0
 	milk_amount_changed.emit(milk_amount)
 
 

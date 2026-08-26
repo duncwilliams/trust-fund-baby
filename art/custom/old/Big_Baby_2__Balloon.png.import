@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btowpychvtyyd"
-path="res://.godot/imported/bottle.png-f2a54cd1004a729af1bd332719b5375d.ctex"
+uid="uid://dunsq1gdecawm"
+path="res://.godot/imported/Big_Baby_2__Balloon.png-22425c5f442a8b218556806b203f76fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/custom/bottle.png"
-dest_files=["res://.godot/imported/bottle.png-f2a54cd1004a729af1bd332719b5375d.ctex"]
+source_file="res://art/custom/old/Big_Baby_2__Balloon.png"
+dest_files=["res://.godot/imported/Big_Baby_2__Balloon.png-22425c5f442a8b218556806b203f76fd.ctex"]
 
 [params]
 

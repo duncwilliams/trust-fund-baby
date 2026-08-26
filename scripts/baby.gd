@@ -4,10 +4,14 @@ signal milk_amount_changed(new_milk_amount: int)
 
 @onready var bottle: Node2D = %Bottle
 var thrust_force: float = 15
-var max_velocity: float = 600
+var max_velocity: float = 560
+
 
 func _physics_process(delta: float) -> void:
-	# gravity
+	# sprite orientation
+	$AnimatedSprite2D.flip_h = (velocity.x < 0)
+	
+	# physics
 	if ((not is_on_floor()) and (not bottle.currently_firing)) :
 		velocity += get_gravity() * delta
 	
@@ -19,10 +23,15 @@ func milk_thrust(thrust_angle: Vector2) -> void:
 	velocity = velocity.limit_length(max_velocity)
 
 
+func refill_bottle():
+	bottle.refill()
+
+func empty_bottle():
+	bottle.empty()
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("carton"):
-		area.queue_free()
-		bottle.refill()
+		refill_bottle()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

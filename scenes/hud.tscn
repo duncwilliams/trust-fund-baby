@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ce0h2p4pyj5l"]
 
 [ext_resource type="Script" uid="uid://cdnndex6vw0gy" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="PackedScene" uid="uid://b2c884cxcq3pv" path="res://scenes/dialogue_controller.tscn" id="2_oo0fn"]
 
 [node name="Hud" type="CanvasLayer" unique_id=1539706795]
 script = ExtResource("1_ahhtf")
@@ -16,6 +17,7 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="MilkMeterTitle" type="Label" parent="MilkMeterControl" unique_id=43019739]
 layout_mode = 1
@@ -73,3 +75,8 @@ theme_override_font_sizes/font_size = 32
 text = "Press R to Restart"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DialogueController" parent="." unique_id=1229814285 instance=ExtResource("2_oo0fn")]
+unique_name_in_owner = true
+
+[connection signal="dialogue_finished" from="DialogueController" to="." method="_on_dialogue_controller_dialogue_finished"]

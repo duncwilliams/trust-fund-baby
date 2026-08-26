@@ -1,17 +1,27 @@
 [gd_scene format=3 uid="uid://cvow3q04r05rf"]
 
 [ext_resource type="Script" uid="uid://bfwi4h7pwsp8s" path="res://scripts/baby.gd" id="1_wpfv3"]
-[ext_resource type="Texture2D" uid="uid://sb6eu3aujbox" path="res://art/custom/Big_Baby_RECOLOR.png" id="3_3hpsf"]
+[ext_resource type="Texture2D" uid="uid://djiuf7i4hc4b" path="res://art/custom/Big_Baby_Landing_2__Balloon.png" id="2_jhev3"]
+[ext_resource type="Texture2D" uid="uid://sb6eu3aujbox" path="res://art/custom/old/Big_Baby_RECOLOR.png" id="3_3hpsf"]
+[ext_resource type="Texture2D" uid="uid://h54f6bm8tcal" path="res://art/custom/Big_Baby_2__Balloon.png" id="3_40ld7"]
 [ext_resource type="PackedScene" uid="uid://0aibwiyik5ip" path="res://scenes/bottle.tscn" id="3_ruhsn"]
-[ext_resource type="Texture2D" uid="uid://c1vdirs7533ed" path="res://art/custom/Big_Baby_Landing_RECOLOR.png" id="4_40ld7"]
+[ext_resource type="Texture2D" uid="uid://c1vdirs7533ed" path="res://art/custom/old/Big_Baby_Landing_RECOLOR.png" id="4_40ld7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgpd6"]
+atlas = ExtResource("2_jhev3")
+region = Rect2(32, 0, 32, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xqix"]
 atlas = ExtResource("4_40ld7")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cgpd6"]
-atlas = ExtResource("4_40ld7")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbq4s"]
+atlas = ExtResource("3_40ld7")
+region = Rect2(0, 0, 32, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnfnd"]
+atlas = ExtResource("3_40ld7")
+region = Rect2(32, 0, 32, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhev3"]
 atlas = ExtResource("3_3hpsf")
@@ -25,13 +35,29 @@ region = Rect2(32, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7xqix")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_cgpd6")
 }],
 "loop": false,
 "name": &"collide",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xqix")
+}],
+"loop": true,
+"name": &"collide_no_balloon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbq4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnfnd")
+}],
+"loop": true,
+"name": &"default",
 "speed": 2.0
 }, {
 "frames": [{
@@ -42,8 +68,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_snfag")
 }],
 "loop": true,
-"name": &"default",
-"speed": 2.0
+"name": &"default_no_balloon",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hpsf"]
@@ -53,32 +79,37 @@ size = Vector2(22, 28.5)
 size = Vector2(25, 29.5)
 
 [node name="Baby" type="CharacterBody2D" unique_id=1502936678 groups=["baby"]]
+z_index = 10
 scale = Vector2(2, 2)
 script = ExtResource("1_wpfv3")
 metadata/_edit_group_ = true
 
-[node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]
-unique_name_in_owner = true
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2044264603]
 unique_name_in_owner = true
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_c7awe")
 animation = &"collide"
 autoplay = "default"
 
+[node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]
+unique_name_in_owner = true
+position = Vector2(13, 9)
+scale = Vector2(0.615, 0.615)
+
 [node name="CharacterBodyCollision" type="CollisionShape2D" parent="." unique_id=1883765674 groups=["baby"]]
-visible = false
 position = Vector2(0, 1.75)
 shape = SubResource("RectangleShape2D_3hpsf")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1278378837 groups=["baby"]]
+unique_name_in_owner = true
+visible = false
 
 [node name="AreaCollision" type="CollisionShape2D" parent="Area2D" unique_id=1391482106]
 position = Vector2(0, 1.75)
 shape = SubResource("RectangleShape2D_k8j53")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="milk_amount_changed" from="Bottle" to="." method="_on_bottle_milk_amount_changed"]
 [connection signal="shot_milk" from="Bottle" to="." method="_on_bottle_shot_milk"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
