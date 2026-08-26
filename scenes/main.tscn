@@ -28,14 +28,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.24705882, 0.21960784, 0.31764707, 1)
+color = Color(0.29803923, 0.23529412, 0.33333334, 1)
 
 [node name="Map" parent="." unique_id=1817902467 instance=ExtResource("5_tbgi4")]
 metadata/_edit_lock_ = true
 
 [node name="Baby" parent="." unique_id=1502936678 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true
-position = Vector2(1363, -2415)
+position = Vector2(311, 215)
 
 [node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
 offset = Vector2(0, -60)
