@@ -88,7 +88,6 @@ metadata/_edit_group_ = true
 unique_name_in_owner = true
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_c7awe")
-animation = &"collide"
 autoplay = "default"
 
 [node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]
@@ -97,6 +96,7 @@ position = Vector2(13, 9)
 scale = Vector2(0.615, 0.615)
 
 [node name="CharacterBodyCollision" type="CollisionShape2D" parent="." unique_id=1883765674 groups=["baby"]]
+visible = false
 position = Vector2(0, 1.75)
 shape = SubResource("RectangleShape2D_3hpsf")
 
