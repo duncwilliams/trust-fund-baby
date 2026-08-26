@@ -2,6 +2,7 @@ extends Node2D
 
 signal arrived_at_second_floor()
 
+
 func disable_invisible_walls() -> void:
 	$InvisibleWallsTML.enabled = false
 

@@ -25,6 +25,7 @@ baby=""
 milk=""
 carton=""
 map=""
+enemy=""
 
 [gui]
 

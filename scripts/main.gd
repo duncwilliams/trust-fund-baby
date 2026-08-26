@@ -42,3 +42,7 @@ func _on_hud_dialogue_finished(dialogue_title: String) -> void:
 
 func _on_enemy_health_changed(new_health: int) -> void:
 	$Hud.update_boss_health_bar(new_health)
+
+
+func _on_baby_took_damage(remaining_health: float) -> void:
+	$Hud.update_baby_health_amount(remaining_health)

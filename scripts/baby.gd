@@ -1,21 +1,39 @@
 extends CharacterBody2D
 
 signal milk_amount_changed(new_milk_amount: int)
+signal took_damage(remaining_health: float)
 
 @onready var bottle: Node2D = %Bottle
 var thrust_force: float = 15
 var max_velocity: float = 560
+var health: float = 4.0
+var invincible: bool = false
+var i_frames_time: float = 3.0
+var defeated: bool = false
 
 
 func _physics_process(delta: float) -> void:
 	# sprite orientation
 	$AnimatedSprite2D.flip_h = (velocity.x < 0)
 	
-	# physics
-	if ((not is_on_floor()) and (not bottle.currently_firing)) :
+	if not defeated:
+		# area overlap detection
+		for area in $Area2D.get_overlapping_areas():
+			if area.is_in_group("carton"):
+				if not area.respawning:
+					area.play_respawn_animation()
+					refill_bottle()
+			elif area.is_in_group("enemy"):
+				take_damage()
+		
+		# physics
+		if ((not is_on_floor()) and (not bottle.currently_firing)) :
+			velocity += get_gravity() * delta
+		
+		move_and_slide()
+	else:
+		bottle.process_mode = Node.PROCESS_MODE_DISABLED
 		velocity += get_gravity() * delta
-	
-	move_and_slide()
 
 
 func milk_thrust(thrust_angle: Vector2) -> void:
@@ -26,13 +44,28 @@ func milk_thrust(thrust_angle: Vector2) -> void:
 func refill_bottle():
 	bottle.refill()
 
+
 func empty_bottle():
+	# i'm like an empty bottle, drained of everything left in my mind
 	bottle.empty()
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("carton"):
-		refill_bottle()
 
+func take_damage():
+	if (not invincible):
+		invincible = true
+		health -= 0.5
+		if health <= 0.0:
+			defeated = true
+		took_damage.emit(health)
+		# TODO: add damage animation here	
+		# i frames
+		await get_tree().create_timer(i_frames_time).timeout
+		invincible = false
+
+
+func defeat():
+	# TODO: add defeat animation here
+	defeated = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("map"):
