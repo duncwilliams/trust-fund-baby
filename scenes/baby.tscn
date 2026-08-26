@@ -86,6 +86,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2044264603]
 unique_name_in_owner = true
+process_mode = 3
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_c7awe")
 autoplay = "default"

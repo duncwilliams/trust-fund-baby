@@ -10,7 +10,11 @@ func play_second_floor_dialogue():
 	$DialogueController.play_second_floor_dialogue()
 
 
-func _on_baby_milk_amount_changed(new_milk_amount: int) -> void:
+func update_boss_health_bar(new_health: int):
+	%BossHealthBar.value = new_health
+
+
+func update_milk_amount(new_milk_amount: int) -> void:
 	current_milk_amount = new_milk_amount
 	%MilkMeterStat.text = str(new_milk_amount)
 	if new_milk_amount == 0:
@@ -24,3 +28,4 @@ func _on_baby_milk_amount_changed(new_milk_amount: int) -> void:
 
 func _on_dialogue_controller_dialogue_finished(dialogue_title: String) -> void:
 		dialogue_finished.emit(dialogue_title)
+		$BossBarControl.visible = true

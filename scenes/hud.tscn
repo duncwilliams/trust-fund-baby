@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cdnndex6vw0gy" path="res://scripts/hud.gd" id="1_ahhtf"]
 [ext_resource type="PackedScene" uid="uid://b2c884cxcq3pv" path="res://scenes/dialogue_controller.tscn" id="2_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://8dn3hw4emp1q" path="res://art/assets/dark_souls_health_bar_dark_behind.png" id="3_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://bh7i5ybx2o8vn" path="res://art/assets/dark_souls_health_bar.png" id="4_uo2fv"]
 
 [node name="Hud" type="CanvasLayer" unique_id=1539706795]
 script = ExtResource("1_ahhtf")
@@ -78,5 +80,43 @@ vertical_alignment = 1
 
 [node name="DialogueController" parent="." unique_id=1229814285 instance=ExtResource("2_oo0fn")]
 unique_name_in_owner = true
+
+[node name="BossBarControl" type="Control" parent="." unique_id=332025002]
+visible = false
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="BossHealthBar" type="TextureProgressBar" parent="BossBarControl" unique_id=193736905]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -503.0
+offset_top = -48.0
+offset_right = 1511.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 1)
+mouse_filter = 2
+max_value = 400.0
+value = 400.0
+texture_under = ExtResource("3_6fi6k")
+texture_progress = ExtResource("4_uo2fv")
 
 [connection signal="dialogue_finished" from="DialogueController" to="." method="_on_dialogue_controller_dialogue_finished"]

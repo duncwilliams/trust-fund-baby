@@ -16,9 +16,12 @@ var line_index: int = 0
 var still_typing: bool = false
 
 
+func _ready() -> void:
+	dialogue_text_label.text = ""
+
+
 func play_second_floor_dialogue():
 	visible = true
-	print("playing second floor dialogue")
 	get_tree().paused = true
 	line_index = 0
 	current_dialogue_title = "second floor"
