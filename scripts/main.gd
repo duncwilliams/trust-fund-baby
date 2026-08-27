@@ -4,8 +4,9 @@ extends Node2D
 
 func _ready() -> void:
 	$Enemy.disable()
-	$Hud.play_intro_dialogue()
-	$Baby/AnimatedSprite2D.flip_h = true
+	if not GameState.intro_played:
+		$Hud.play_intro_dialogue()
+		$Baby/AnimatedSprite2D.flip_h = true
 
 
 func _process(delta: float) -> void:
@@ -38,6 +39,8 @@ func _on_hud_dialogue_finished(dialogue_title: String) -> void:
 	
 	if dialogue_title == "intro":
 		$Friend/AnimatedSprite2D.play("point")
+		GameState.intro_played = true
+		
 	elif dialogue_title == "second floor":
 		spawn_second_floor_enemy()
 		$Map.disable_invisible_walls()
