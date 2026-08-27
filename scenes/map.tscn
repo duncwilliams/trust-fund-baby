@@ -994,9 +994,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lpho"]
-size = Vector2(470.09146, 20)
-
 [node name="Map" type="Node2D" unique_id=1817902467 groups=["map"]]
 modulate = Color(0.91273814, 0.90737766, 0.9735089, 1)
 script = ExtResource("1_2klcf")
@@ -1142,14 +1139,7 @@ position = Vector2(156, 351.00003)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_mlgqr")
 autoplay = "default"
-frame_progress = 0.234361
+frame_progress = 0.572393
 flip_h = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=567554215]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=115728467]
-position = Vector2(147, 105)
-rotation = 0.66497046
-shape = SubResource("RectangleShape2D_2lpho")
 
 [connection signal="area_entered" from="SecondFloorTrigger" to="." method="_on_second_floor_trigger_area_entered"]
