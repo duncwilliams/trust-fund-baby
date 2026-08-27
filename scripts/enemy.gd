@@ -8,6 +8,10 @@ var health: int = 400
 var defeated: bool = false
 
 
+func _ready() -> void:
+	$AnimatedSprite2D.play("idle")
+
+
 func _physics_process(delta: float) -> void:
 	
 	if not defeated:

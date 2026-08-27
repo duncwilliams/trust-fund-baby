@@ -5,7 +5,6 @@ signal dialogue_finished(dialogue_title: String)
 @export var playtesting: bool = false
 @onready var dialogue_text_label: RichTextLabel = %DialogueTextLabel
 var intro_lines: Array[String] = [
-	#"placeholder dialogue"
 	"Oh look, it's a dumb ass baby.",
 	"Hey, moron, things aren’t all goo-goo and gah-gah out here, okay?",
 	"This is the real world so listen up!",
@@ -16,7 +15,6 @@ var intro_lines: Array[String] = [
 	"Trust no one!"
 ]
 var second_floor_lines: Array[String] = [
-	#"placeholder dialogue"
 	"Well, well, well",
 	"Didn't I tell your dumb ass not to trust anyone?",
 	"I am your morally bad and corrupt brother!",
@@ -49,6 +47,7 @@ func play_second_floor_dialogue():
 
 
 func play_lines():
+	# shorten all dialogue if playtesting
 	if playtesting:
 		current_lines = ["playtesting"]
 	
