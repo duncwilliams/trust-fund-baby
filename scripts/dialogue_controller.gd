@@ -2,6 +2,7 @@ extends Control
 
 signal dialogue_finished(dialogue_title: String)
 
+@export var playtesting: bool = false
 @onready var dialogue_text_label: RichTextLabel = %DialogueTextLabel
 var intro_lines: Array[String] = [
 	#"placeholder dialogue"
@@ -48,6 +49,9 @@ func play_second_floor_dialogue():
 
 
 func play_lines():
+	if playtesting:
+		current_lines = ["playtesting"]
+	
 	visible = true
 	get_tree().paused = true
 	line_index = 0
