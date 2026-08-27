@@ -36,7 +36,7 @@ metadata/_edit_lock_ = true
 
 [node name="Baby" parent="." unique_id=1502936678 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true
-position = Vector2(1395, -2464)
+position = Vector2(502, 479)
 
 [node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
 offset = Vector2(0, -60)
@@ -63,7 +63,7 @@ position = Vector2(963, -3580)
 position = Vector2(1077, -3522)
 
 [node name="Friend" parent="." unique_id=1435211521 instance=ExtResource("6_tefeu")]
-position = Vector2(136, 387)
+position = Vector2(319, 387)
 
 [node name="PlaceholderBabySpawn" type="Marker2D" parent="." unique_id=1803959226]
 position = Vector2(502, 479)

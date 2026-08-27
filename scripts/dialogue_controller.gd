@@ -9,10 +9,9 @@ var intro_lines: Array[String] = [
 	"Hey, moron, things aren’t all goo-goo and gah-gah out here, okay?",
 	"This is the real world so listen up!",
 	"A mighty trust fund was passed to you by your parents.",
-	"But some people – your morally bad relatives – have stolen it from you!",
+	"But your morally bad relatives are here to steal it from you!",
 	"You must escape through the attic and track down your relatives.",
-	"Be careful, they are crafty.",
-	"Trust no one!"
+	"I'll hold them off, just go!"
 ]
 var second_floor_lines: Array[String] = [
 	"Well, well, well",
