@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal milk_amount_changed(new_milk_amount: int)
 signal took_damage(remaining_health: float)
+signal was_defeated()
 
 @onready var bottle: Node2D = %Bottle
 var thrust_force: float = 15
@@ -14,6 +15,7 @@ var crawl_speed: float = 30
 var crawling: bool = false
 var was_crawling: bool = false
 var animation_locked: bool = false
+var pre_death_delay: float = 2.5
 
 
 func _physics_process(delta: float) -> void: 	
@@ -96,7 +98,6 @@ func take_damage():
 
 
 func defeat():
-	print("defeat called")
 	defeated = true
 	crawling = false
 	was_crawling = false
@@ -105,8 +106,9 @@ func defeat():
 	$CharacterBodyCollision.set_deferred("disabled", true)
 	$Area2D/AreaCollision.set_deferred("disabled", true)
 	animation_locked = true
+	get_tree().paused = true
+	await get_tree().create_timer(pre_death_delay).timeout
 	$AnimatedSprite2D.play("defeat")
-	print("animation defeat played", $AnimatedSprite2D.animation)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("map") and not animation_locked:
@@ -124,6 +126,9 @@ func _on_bottle_milk_amount_changed(new_milk_amount: int) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "damage":
 		animation_locked = false
+	
+	if $AnimatedSprite2D.animation == "defeat":
+		was_defeated.emit()
 	
 	if not animation_locked:
 		if not $AnimatedSprite2D.animation == "defeat" and not crawling:

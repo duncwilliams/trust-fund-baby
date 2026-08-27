@@ -38,6 +38,7 @@ unique_name_in_owner = true
 position = Vector2(1374, -2317)
 
 [node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
+process_mode = 3
 offset = Vector2(0, -60)
 zoom = Vector2(0.5, 0.5)
 drag_horizontal_enabled = true
@@ -69,5 +70,6 @@ position = Vector2(502, 479)
 [connection signal="arrived_at_second_floor" from="Map" to="." method="_on_map_arrived_at_second_floor"]
 [connection signal="milk_amount_changed" from="Baby" to="." method="_on_baby_milk_amount_changed"]
 [connection signal="took_damage" from="Baby" to="." method="_on_baby_took_damage"]
+[connection signal="was_defeated" from="Baby" to="." method="_on_baby_was_defeated"]
 [connection signal="dialogue_finished" from="Hud" to="." method="_on_hud_dialogue_finished"]
 [connection signal="health_changed" from="Enemy" to="." method="_on_enemy_health_changed"]

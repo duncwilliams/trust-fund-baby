@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://unq8c6du1t4s" path="res://art/custom/Traitor_Damage.png" id="2_xwavj"]
 [ext_resource type="Texture2D" uid="uid://fhe3d3wf6skt" path="res://art/custom/The_Traitor_Walk.png" id="3_4ra3w"]
 [ext_resource type="Shape2D" uid="uid://cgopdmcoxfhvm" path="res://shapes/enemy_polygon.tres" id="4_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://bkrv76aayrv7t" path="res://art/custom/The_Traitor_Idle.png" id="4_nenq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qiusc"]
 atlas = ExtResource("2_xwavj")
@@ -138,6 +139,14 @@ region = Rect2(832, 64, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vab5u"]
 atlas = ExtResource("2_c4w8v")
 region = Rect2(896, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmgde"]
+atlas = ExtResource("4_nenq2")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn1pv"]
+atlas = ExtResource("4_nenq2")
+region = Rect2(32, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
 atlas = ExtResource("2_4ra3w")
@@ -294,6 +303,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bmgde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn1pv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5uy6h")
 }, {
 "duration": 1.0,
@@ -309,7 +329,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_otmr2")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"point",
 "speed": 10.0
 }, {
 "frames": [{

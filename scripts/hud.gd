@@ -6,10 +6,13 @@ var restart_prompt_delay: int = 5
 # backup milk counter purely for making sure restart prompt doesn't display after player collected a carton
 var current_milk_amount: int = 100
 var in_boss_battle = false
+var fullscreen_display_time: float = 3.0
+var fullscreen_fade_time: float = 1.0
 
 
 func _ready() -> void:
 	$RestartPrompt.visible = false
+	$DefeatRespawnPrompt.visible = false
 
 
 func update_milk_amount(new_milk_amount: int) -> void:
@@ -44,6 +47,19 @@ func update_baby_health_amount(new_health_amount: float) -> void:
 		%HeartsSprite.play("half_heart")
 	else:
 		%HeartsSprite.play("no_hearts")
+		$MilkMeterControl.visible = false
+
+
+func play_fullscreen_intro_message():
+	$FullscreenMessageControl.visible = true
+	get_tree().paused = true
+	await get_tree().create_timer(fullscreen_display_time).timeout
+	var tween := create_tween()
+	tween.tween_property($FullscreenMessageControl, "modulate:a", 0.0, fullscreen_fade_time)
+	await tween.finished
+
+	get_tree().paused = false
+	$FullscreenMessageControl.queue_free()
 
 
 func play_intro_dialogue():
@@ -63,3 +79,7 @@ func _on_dialogue_controller_dialogue_finished(dialogue_title: String) -> void:
 		if dialogue_title == "second floor":
 			$BossBarControl.visible = true
 			in_boss_battle = true
+		if dialogue_title == "victory":
+			$BossBarControl.visible = false
+		if dialogue_title == "defeat":
+			$DefeatRespawnPrompt.visible = true

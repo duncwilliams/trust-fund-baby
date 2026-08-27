@@ -22,7 +22,13 @@ var second_floor_lines: Array[String] = [
 	"But you and your dumb balloon bandolier freed me!",
 	"Sorry, loser, I can’t let you witness my grand heist."
 ]
-#TODO: add victory and defeat dialogue
+var victory_lines: Array[String] = [
+	"I cannot believe you have done this to me"
+]
+var defeat_lines: Array[String] = [
+	"Your first mistake was trusting me",
+	"Your second mistake was fighting a grown man as a baby"
+]
 var current_dialogue_title: String = ""
 var current_lines: Array[String] = []
 var line_index: int = 0
@@ -42,6 +48,18 @@ func play_intro_dialogue():
 func play_second_floor_dialogue():
 	current_dialogue_title = "second floor"
 	current_lines = second_floor_lines
+	play_lines()
+
+
+func play_victory_dialogue():
+	current_dialogue_title = "victory"
+	current_lines = victory_lines
+	play_lines()
+
+
+func play_defeat_dialogue():
+	current_dialogue_title = "defeat"
+	current_lines = defeat_lines
 	play_lines()
 
 
