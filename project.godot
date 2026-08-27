@@ -21,7 +21,6 @@ GameState="*uid://4judk08vehv1"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
 
 [global_group]
 
