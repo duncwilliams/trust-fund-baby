@@ -981,7 +981,7 @@ tile_set = SubResource("TileSet_gldc4")
 [node name="Cartons" type="Node2D" parent="." unique_id=280399400]
 
 [node name="Carton5" parent="Cartons" unique_id=736468841 instance=ExtResource("2_paxxb")]
-position = Vector2(113, 451)
+position = Vector2(268, 450)
 
 [node name="Carton" parent="Cartons" unique_id=403586504 instance=ExtResource("2_paxxb")]
 position = Vector2(1852, -124)
@@ -994,8 +994,7 @@ position = Vector2(72, -761)
 position = Vector2(1852, -1340)
 
 [node name="Carton4" parent="Cartons" unique_id=1461498588 instance=ExtResource("2_paxxb")]
-position = Vector2(1379, -2301)
-scale = Vector2(-1.4947119, 3.6697898)
+position = Vector2(1382, -2302)
 
 [node name="Carton12" parent="Cartons" unique_id=1754343104 instance=ExtResource("2_paxxb")]
 position = Vector2(1474, -2302)
@@ -1074,7 +1073,6 @@ flip_h = true
 
 [node name="SecondFloorTrigger" type="Area2D" parent="." unique_id=1735183162]
 unique_name_in_owner = true
-visible = false
 position = Vector2(1423, -3637)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SecondFloorTrigger" unique_id=975467472]

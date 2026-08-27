@@ -2,10 +2,10 @@ extends Node2D
 
 @export var second_floor_enemy_scene: PackedScene
 
-
 func _ready() -> void:
 	$Enemy.disable()
-	$Enemy.disable_mode
+	$Hud.play_intro_dialogue()
+	$Baby/AnimatedSprite2D.flip_h = true
 
 
 func _process(delta: float) -> void:
@@ -34,10 +34,14 @@ func _on_map_arrived_at_second_floor() -> void:
 
 
 func _on_hud_dialogue_finished(dialogue_title: String) -> void:
-	if dialogue_title == "second floor":
+	print("dialogue finished ", dialogue_title)
+	
+	if dialogue_title == "intro":
+		$Friend/AnimatedSprite2D.play("point")
+	elif dialogue_title == "second floor":
 		spawn_second_floor_enemy()
 		$Map.disable_invisible_walls()
-		
+		$BossMusicPlayer.play()
 
 
 func _on_enemy_health_changed(new_health: int) -> void:

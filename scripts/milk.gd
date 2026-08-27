@@ -14,10 +14,10 @@ func launch(direction: Vector2, speed: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if (not area.is_in_group("baby") and not area.is_in_group("milk")):
+	if (not area.is_in_group("baby") and not area.is_in_group("milk") and not area.is_in_group("carton")):
 		queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if (not body.is_in_group("baby") and not body.is_in_group("milk")):
+	if (not body.is_in_group("baby") and not body.is_in_group("milk") and not body.is_in_group("carton")):
 		queue_free()

@@ -42,6 +42,10 @@ func update_baby_health_amount(new_health_amount: float) -> void:
 		%HeartsSprite.play("no_hearts")
 
 
+func play_intro_dialogue():
+	$DialogueController.play_intro_dialogue()
+
+
 func play_second_floor_dialogue():
 	$DialogueController.play_second_floor_dialogue()
 

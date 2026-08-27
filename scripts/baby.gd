@@ -8,11 +8,11 @@ var thrust_force: float = 15
 var max_velocity: float = 560
 var health: float = 4.0
 var invincible: bool = false
-var i_frames_time: float = 3.0
+var i_frames_time: float = 2.0
 var defeated: bool = false
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void: 
 	# sprite orientation
 	$AnimatedSprite2D.flip_h = (velocity.x < 0)
 	
@@ -32,7 +32,6 @@ func _physics_process(delta: float) -> void:
 		
 		move_and_slide()
 	else:
-		bottle.process_mode = Node.PROCESS_MODE_DISABLED
 		velocity += get_gravity() * delta
 
 
@@ -55,17 +54,22 @@ func take_damage():
 		invincible = true
 		health -= 0.5
 		if health <= 0.0:
-			defeated = true
+			defeat()
 		took_damage.emit(health)
-		# TODO: add damage animation here	
+		$AnimatedSprite2D.play("damage")
 		# i frames
 		await get_tree().create_timer(i_frames_time).timeout
 		invincible = false
 
 
 func defeat():
-	# TODO: add defeat animation here
 	defeated = true
+	$Bottle/AnimatedSprite2D.visible = false
+	$Bottle.process_mode = Node.PROCESS_MODE_DISABLED
+	$CharacterBodyCollision.set_deferred("disabled", true)
+	$Area2D/AreaCollision.set_deferred("disabled", true)
+	print("baby defeated")
+	$AnimatedSprite2D.play("defeat")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("map"):
@@ -81,4 +85,5 @@ func _on_bottle_milk_amount_changed(new_milk_amount: int) -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	$AnimatedSprite2D.play("default")
+	if not $AnimatedSprite2D.animation == "defeat":
+		$AnimatedSprite2D.play("default")

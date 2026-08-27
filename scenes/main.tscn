@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ce0h2p4pyj5l" path="res://scenes/hud.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bma0jh32ox7pj" path="res://scenes/map.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dxhgehgl2qp1" path="res://scenes/enemy.tscn" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://qs56l2yn2row" path="res://scenes/friend.tscn" id="6_tefeu"]
+[ext_resource type="AudioStream" uid="uid://dniadfdp5xlry" path="res://audio/music/Ornstein and Smough - Dark Souls Soundtrack 15.mp3" id="7_o6xl0"]
 
 [node name="Main" type="Node2D" unique_id=246328731]
 script = ExtResource("1_jyhfs")
@@ -34,7 +36,7 @@ metadata/_edit_lock_ = true
 
 [node name="Baby" parent="." unique_id=1502936678 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true
-position = Vector2(1724, -1393)
+position = Vector2(502, 479)
 
 [node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
 offset = Vector2(0, -60)
@@ -58,6 +60,15 @@ position = Vector2(963, -3580)
 
 [node name="Enemy" parent="." unique_id=1988915028 instance=ExtResource("5_tefeu")]
 position = Vector2(1077, -3522)
+
+[node name="Friend" parent="." unique_id=1435211521 instance=ExtResource("6_tefeu")]
+position = Vector2(136, 387)
+
+[node name="PlaceholderBabySpawn" type="Marker2D" parent="." unique_id=1803959226]
+position = Vector2(502, 479)
+
+[node name="BossMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1138633503]
+stream = ExtResource("7_o6xl0")
 
 [connection signal="arrived_at_second_floor" from="Map" to="." method="_on_map_arrived_at_second_floor"]
 [connection signal="milk_amount_changed" from="Baby" to="." method="_on_baby_milk_amount_changed"]
