@@ -985,15 +985,23 @@ position = Vector2(113, 451)
 
 [node name="Carton" parent="Cartons" unique_id=403586504 instance=ExtResource("2_paxxb")]
 position = Vector2(1852, -124)
+scale = Vector2(2, 1.9961551)
 
 [node name="Carton2" parent="Cartons" unique_id=304823765 instance=ExtResource("2_paxxb")]
 position = Vector2(72, -761)
 
 [node name="Carton3" parent="Cartons" unique_id=894962944 instance=ExtResource("2_paxxb")]
-position = Vector2(1794, -1354)
+position = Vector2(1852, -1340)
 
 [node name="Carton4" parent="Cartons" unique_id=1461498588 instance=ExtResource("2_paxxb")]
-position = Vector2(1400, -2300)
+position = Vector2(1379, -2301)
+scale = Vector2(-1.4947119, 3.6697898)
+
+[node name="Carton12" parent="Cartons" unique_id=1754343104 instance=ExtResource("2_paxxb")]
+position = Vector2(1474, -2302)
+
+[node name="Carton11" parent="Cartons" unique_id=3664744 instance=ExtResource("2_paxxb")]
+position = Vector2(1285, -2301)
 
 [node name="Carton6" parent="Cartons" unique_id=1501727220 instance=ExtResource("2_paxxb")]
 position = Vector2(1283, -2784)

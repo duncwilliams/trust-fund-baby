@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bywpro3sfemtg" path="res://art/custom/hearts/two_and_half_hearts.png" id="6_5n1hp"]
 [ext_resource type="Texture2D" uid="uid://cq2xp8y8n7xt7" path="res://art/custom/hearts/three_hearts.png" id="8_3swnk"]
 [ext_resource type="Texture2D" uid="uid://b6p2iqt52inxf" path="res://art/custom/hearts/two_hearts.png" id="10_qkknv"]
+[ext_resource type="FontFile" uid="uid://bbw1min3f4xv0" path="res://fonts/EBGaramond-VariableFont_wght.ttf" id="14_eld54"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eld54"]
 atlas = ExtResource("2_0i1j5")
@@ -705,6 +706,7 @@ size_flags_vertical = 4
 
 [node name="HeartsSprite" type="AnimatedSprite2D" parent="HeartsControl" unique_id=1813721123]
 unique_name_in_owner = true
+process_mode = 3
 position = Vector2(159, 60)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pwa8h")
@@ -821,5 +823,15 @@ max_value = 400.0
 value = 400.0
 texture_under = ExtResource("3_6fi6k")
 texture_progress = ExtResource("4_uo2fv")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BossBarControl" unique_id=840906635]
+layout_mode = 0
+offset_left = -476.0
+offset_top = -62.0
+offset_right = 41.0
+offset_bottom = -22.0
+theme_override_fonts/normal_font = ExtResource("14_eld54")
+theme_override_font_sizes/normal_font_size = 23
+text = "Kinsman Simeon, The Turncoat"
 
 [connection signal="dialogue_finished" from="DialogueController" to="." method="_on_dialogue_controller_dialogue_finished"]
