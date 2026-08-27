@@ -31,7 +31,7 @@ func _on_hud_dialogue_finished(dialogue_title: String) -> void:
 	print("dialogue finished ", dialogue_title)
 	
 	if dialogue_title == "intro":
-		$Friend/AnimatedSprite2D.play("point")
+		$Map/Friend/AnimatedSprite2D.play("point")
 		GameState.intro_played = true
 		
 	elif dialogue_title == "second floor":

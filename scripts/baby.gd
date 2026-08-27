@@ -96,12 +96,17 @@ func take_damage():
 
 
 func defeat():
+	print("defeat called")
 	defeated = true
+	crawling = false
+	was_crawling = false
 	$Bottle/AnimatedSprite2D.visible = false
 	$Bottle.process_mode = Node.PROCESS_MODE_DISABLED
 	$CharacterBodyCollision.set_deferred("disabled", true)
 	$Area2D/AreaCollision.set_deferred("disabled", true)
+	animation_locked = true
 	$AnimatedSprite2D.play("defeat")
+	print("animation defeat played", $AnimatedSprite2D.animation)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("map") and not animation_locked:

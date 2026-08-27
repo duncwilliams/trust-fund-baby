@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c2wsylqc3fqoh" path="res://art/custom/diagonal_arrow.png" id="3_gldc4"]
 [ext_resource type="Texture2D" uid="uid://dmqevkbt8jdmh" path="res://art/custom/cardinal_arrows.png" id="4_0cso3"]
 [ext_resource type="Texture2D" uid="uid://h75pwcu62m72" path="res://art/custom/Door.png" id="6_2lpho"]
+[ext_resource type="PackedScene" uid="uid://qs56l2yn2row" path="res://scenes/friend.tscn" id="7_nakos"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_paxxb"]
 texture = ExtResource("1_4xfga")
@@ -1139,7 +1140,10 @@ position = Vector2(156, 351.00003)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_mlgqr")
 autoplay = "default"
-frame_progress = 0.572393
+frame_progress = 0.7076188
 flip_h = true
+
+[node name="Friend" parent="." unique_id=1435211521 instance=ExtResource("7_nakos")]
+position = Vector2(319, 387)
 
 [connection signal="area_entered" from="SecondFloorTrigger" to="." method="_on_second_floor_trigger_area_entered"]

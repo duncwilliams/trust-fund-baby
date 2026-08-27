@@ -2,10 +2,14 @@ extends CanvasLayer
 
 signal dialogue_finished(dialogue_title: String)
 
-var restart_prompt_delay: int = 3
+var restart_prompt_delay: int = 5
 # backup milk counter purely for making sure restart prompt doesn't display after player collected a carton
 var current_milk_amount: int = 100
 var in_boss_battle = false
+
+
+func _ready() -> void:
+	$RestartPrompt.visible = false
 
 
 func update_milk_amount(new_milk_amount: int) -> void:

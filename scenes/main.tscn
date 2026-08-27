@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://ce0h2p4pyj5l" path="res://scenes/hud.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bma0jh32ox7pj" path="res://scenes/map.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dxhgehgl2qp1" path="res://scenes/enemy.tscn" id="5_tefeu"]
-[ext_resource type="PackedScene" uid="uid://qs56l2yn2row" path="res://scenes/friend.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dpv06ermcjg2p" path="res://scenes/music_player.tscn" id="7_o6xl0"]
 
 [node name="Main" type="Node2D" unique_id=246328731]
@@ -36,7 +35,7 @@ metadata/_edit_lock_ = true
 
 [node name="Baby" parent="." unique_id=1502936678 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true
-position = Vector2(502, 479)
+position = Vector2(1374, -2317)
 
 [node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
 offset = Vector2(0, -60)
@@ -61,9 +60,6 @@ position = Vector2(963, -3580)
 
 [node name="Enemy" parent="." unique_id=1988915028 instance=ExtResource("5_tefeu")]
 position = Vector2(1077, -3522)
-
-[node name="Friend" parent="." unique_id=1435211521 instance=ExtResource("6_tefeu")]
-position = Vector2(319, 387)
 
 [node name="PlaceholderBabySpawn" type="Marker2D" parent="." unique_id=1803959226]
 position = Vector2(502, 479)

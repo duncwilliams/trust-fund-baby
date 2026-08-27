@@ -739,6 +739,8 @@ offset_right = -34.0
 offset_bottom = -127.000015
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 36
 text = "MILK METER™ "
 horizontal_alignment = 1
@@ -758,6 +760,8 @@ offset_right = 37.0
 offset_bottom = 76.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 48
 text = "100"
 horizontal_alignment = 1
@@ -765,21 +769,24 @@ vertical_alignment = 1
 
 [node name="RestartPrompt" type="Label" parent="." unique_id=259127323]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -194.0
-offset_top = -20.5
-offset_right = 194.0
-offset_bottom = 20.5
+offset_left = -519.0
+offset_top = 144.0
+offset_right = -79.0
+offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 32
-text = "Press R to Restart"
+text = "USE w and s to crawl
+or
+Press R to Restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
