@@ -9,7 +9,7 @@ func _ready() -> void:
 		$Baby/AnimatedSprite2D.flip_h = true
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 
