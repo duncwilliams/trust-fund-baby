@@ -819,8 +819,8 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 1)
 mouse_filter = 2
-max_value = 400.0
-value = 400.0
+max_value = 600.0
+value = 600.0
 texture_under = ExtResource("3_6fi6k")
 texture_progress = ExtResource("4_uo2fv")
 

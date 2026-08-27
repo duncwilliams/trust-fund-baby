@@ -20,7 +20,7 @@ func _on_baby_milk_amount_changed(new_milk_amount: int) -> void:
 
 func _on_map_arrived_at_second_floor() -> void:
 	$Baby.empty_bottle()
-	$BackgroundMusicPlayer.stop()
+	$MusicPlayer/BackgroundMusic.stop()
 	await get_tree().create_timer(2.0).timeout
 	$Enemy.enable()
 	$Hud.play_second_floor_dialogue()
@@ -37,7 +37,7 @@ func _on_hud_dialogue_finished(dialogue_title: String) -> void:
 	elif dialogue_title == "second floor":
 		#spawn_second_floor_enemy()
 		$Map.disable_invisible_walls()
-		$BossMusicPlayer.play()
+		$MusicPlayer/BossMusic.play()
 
 
 func _on_enemy_health_changed(new_health: int) -> void:

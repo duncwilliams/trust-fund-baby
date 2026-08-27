@@ -337,7 +337,7 @@ script = ExtResource("1_4ra3w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=634802606]
 process_mode = 3
 sprite_frames = SubResource("SpriteFrames_8qclf")
-animation = &"damage"
+animation = &"idle"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=597369825 groups=["enemy"]]
@@ -350,4 +350,5 @@ shape = ExtResource("4_5uy6h")
 position = Vector2(-0.375, 3.75)
 shape = ExtResource("4_5uy6h")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

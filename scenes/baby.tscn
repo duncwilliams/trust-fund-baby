@@ -248,6 +248,7 @@ size = Vector2(25, 29.5)
 [node name="Baby" type="CharacterBody2D" unique_id=1502936678 groups=["baby"]]
 z_index = 10
 scale = Vector2(2, 2)
+floor_max_angle = 0.06283186
 script = ExtResource("1_wpfv3")
 metadata/_edit_group_ = true
 

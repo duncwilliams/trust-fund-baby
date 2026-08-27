@@ -29,6 +29,7 @@ milk=""
 carton=""
 map=""
 enemy=""
+hidden=""
 
 [gui]
 

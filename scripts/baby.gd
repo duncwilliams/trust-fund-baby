@@ -8,7 +8,7 @@ var thrust_force: float = 15
 var max_velocity: float = 560
 var health: float = 4.0
 var invincible: bool = false
-var i_frames_time: float = 2.0
+var i_frames_time: float = 1.5
 var defeated: bool = false
 
 
