@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://qs56l2yn2row"]
+
+[ext_resource type="Script" uid="uid://ujrxlokusua5" path="res://scripts/friend.gd" id="1_bmgde"]
+[ext_resource type="Texture2D" uid="uid://bkrv76aayrv7t" path="res://art/custom/The_Traitor_Idle.png" id="1_mykxq"]
+[ext_resource type="Texture2D" uid="uid://dr0mlw2rch3xo" path="res://art/custom/The_Traitor_Extras_tweaked_alignment.png" id="1_s8sfs"]
+[ext_resource type="Shape2D" uid="uid://cgopdmcoxfhvm" path="res://shapes/enemy_polygon.tres" id="3_mykxq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmgde"]
+atlas = ExtResource("1_mykxq")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn1pv"]
+atlas = ExtResource("1_mykxq")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+atlas = ExtResource("1_s8sfs")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("1_s8sfs")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qclf"]
+atlas = ExtResource("1_s8sfs")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8i8w"]
+atlas = ExtResource("1_s8sfs")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otmr2"]
+atlas = ExtResource("1_s8sfs")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bmgde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmgde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn1pv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uy6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qclf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8i8w")
+}, {
+"duration": 12.0,
+"texture": SubResource("AtlasTexture_otmr2")
+}],
+"loop": true,
+"name": &"point",
+"speed": 8.0
+}]
+
+[node name="Friend" type="StaticBody2D" unique_id=1435211521]
+scale = Vector2(4, 4)
+script = ExtResource("1_bmgde")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1816019153]
+process_mode = 3
+sprite_frames = SubResource("SpriteFrames_bmgde")
+animation = &"idle"
+autoplay = "point"
+frame_progress = 0.43355197
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=852769313 groups=["enemy"]]
+position = Vector2(-0.375, 3.75)
+shape = ExtResource("3_mykxq")
