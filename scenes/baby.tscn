@@ -152,7 +152,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_unwpt")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage",
 "speed": 8.0
 }, {
@@ -256,6 +256,7 @@ unique_name_in_owner = true
 process_mode = 3
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_c7awe")
+animation = &"damage"
 autoplay = "default"
 
 [node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]

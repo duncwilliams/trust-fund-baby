@@ -53,13 +53,14 @@ func take_damage():
 	if (not invincible):
 		invincible = true
 		health -= 0.5
+		took_damage.emit(health)
 		if health <= 0.0:
 			defeat()
-		took_damage.emit(health)
-		$AnimatedSprite2D.play("damage")
-		# i frames
-		await get_tree().create_timer(i_frames_time).timeout
-		invincible = false
+		else:
+			$AnimatedSprite2D.play("damage")
+			# i frames
+			await get_tree().create_timer(i_frames_time).timeout
+			invincible = false
 
 
 func defeat():
