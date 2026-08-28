@@ -49,8 +49,6 @@ func _on_map_arrived_at_second_floor() -> void:
 
 
 func _on_hud_dialogue_finished(dialogue_title: String) -> void:
-	print("dialogue finished ", dialogue_title)
-	
 	if dialogue_title == "intro":
 		$Map/Friend/AnimatedSprite2D.play("point")
 		GameState.intro_played = true

@@ -4,6 +4,9 @@ signal dialogue_finished(dialogue_title: String)
 
 @export var playtesting: bool = false
 @onready var dialogue_text_label: RichTextLabel = %DialogueTextLabel
+var listening_for_input: bool = false
+var current_tween: Tween
+var advance_prompt_timer: SceneTreeTimer
 var intro_lines: Array[String] = [
 	"Oh look, it's a dumb ass baby.",
 	"Hey, moron, things aren’t all goo-goo and gah-gah out here, okay?",
@@ -64,6 +67,11 @@ func play_defeat_dialogue():
 
 
 func play_lines():
+	visible = true
+	
+	#start listening for inputs
+	listening_for_input = true
+	
 	# shorten all dialogue if playtesting
 	if playtesting:
 		current_lines = ["playtesting"]
@@ -79,17 +87,37 @@ func display_next_line(index: int):
 	dialogue_text_label.visible_ratio = 0.0
 	still_typing = true
 	
-	var tween := create_tween()
-	tween.tween_property(dialogue_text_label, "visible_ratio", 1.0, current_lines[index].length() * 0.03)
-	tween.finished.connect(func(): still_typing = false)
+	current_tween = create_tween()
+	current_tween.tween_property(dialogue_text_label, "visible_ratio", 1.0, current_lines[index].length() * 0.03)
+	current_tween.finished.connect(line_is_fully_typed)
+
+
+func line_is_fully_typed() -> void:
+	still_typing = false
+	advance_prompt_timer = get_tree().create_timer(3.0)
+	advance_prompt_timer.timeout.connect(prompt_timer_timed_out)
+
+func prompt_timer_timed_out() -> void:
+	$AdvanceDialogueLabel.visible = true
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("advance_dialogue") and not still_typing:
-		line_index += 1
-		if line_index < current_lines.size():
-			display_next_line(line_index)
+	if event.is_pressed() and not event is InputEventMouseMotion and listening_for_input:
+		if (advance_prompt_timer != null):
+			advance_prompt_timer.timeout.disconnect(prompt_timer_timed_out)
+		$AdvanceDialogueLabel.visible = false
+		if still_typing:
+			current_tween.kill()
+			dialogue_text_label.visible_ratio = 1.0
+			line_is_fully_typed()
 		else:
-			get_tree().paused = false
-			visible = false
-			dialogue_finished.emit(current_dialogue_title)
+			line_index += 1
+			if line_index < current_lines.size():
+				display_next_line(line_index)
+			else:
+				get_tree().paused = false
+				visible = false
+				dialogue_finished.emit(current_dialogue_title)
+				#stop listening for inputs
+				listening_for_input = false
+				visible = false
