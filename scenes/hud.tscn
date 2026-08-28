@@ -709,7 +709,7 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 process_mode = 3
 position = Vector2(159, 60)
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_pwa8h")
 animation = &"full_hearts"
 autoplay = "full_hearts"
@@ -742,7 +742,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
 theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 34
 text = "MILK METER™ "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -811,6 +811,46 @@ theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 32
 text = "press r to restart"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReplayPrompt" type="Label" parent="." unique_id=542436786]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -527.0
+offset_top = 141.0
+offset_right = -87.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "press r to replay"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1689840301]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -316.0
+offset_top = -13.0
+offset_right = 123.99902
+offset_bottom = 122.53999
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "TIME: 00:00:00"
 vertical_alignment = 1
 
 [node name="DialogueController" parent="." unique_id=1229814285 instance=ExtResource("2_oo0fn")]
@@ -901,5 +941,7 @@ text = "playing in fullscreen is recommended
 for the best aiming experience"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RestartPromptTimer" type="Timer" parent="." unique_id=1565890890]
 
 [connection signal="dialogue_finished" from="DialogueController" to="." method="_on_dialogue_controller_dialogue_finished"]

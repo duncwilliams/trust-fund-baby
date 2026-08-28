@@ -8,6 +8,7 @@ var current_milk_amount: int = 100
 var in_boss_battle = false
 var fullscreen_display_time: float = 3.0
 var fullscreen_fade_time: float = 1.0
+var restart_prompt_pending: bool = false
 
 
 func _ready() -> void:
@@ -15,17 +16,18 @@ func _ready() -> void:
 	$DefeatRespawnPrompt.visible = false
 	$HeartsControl.visible = false
 	$BossBarControl.visible = false
+	$ReplayPrompt.visible = false
+	$RestartPromptTimer.wait_time = restart_prompt_delay
+	$RestartPromptTimer.timeout.connect(restart_prompt_timer_timeout)
 
 
 func update_milk_amount(new_milk_amount: int) -> void:
 	current_milk_amount = new_milk_amount
 	%MilkMeterStat.text = str(new_milk_amount)
-	if ((new_milk_amount == 0) and (not in_boss_battle)):
-		await get_tree().create_timer(restart_prompt_delay).timeout
-		# check again to make sure player did not pick up carton after running out of milk
-		if current_milk_amount == 0:
-			$RestartPrompt.visible = true
+	if new_milk_amount == 0 and not in_boss_battle:
+		$RestartPromptTimer.start()  # restarts from full duration even if already running
 	else:
+		$RestartPromptTimer.stop()
 		$RestartPrompt.visible = false
 
 
@@ -74,6 +76,11 @@ func play_second_floor_dialogue():
 
 func update_boss_health_bar(new_health: int):
 	%BossHealthBar.value = new_health
+
+
+func restart_prompt_timer_timeout() -> void:
+	if current_milk_amount == 0:
+		$RestartPrompt.visible = true
 
 
 func _on_dialogue_controller_dialogue_finished(dialogue_title: String) -> void:

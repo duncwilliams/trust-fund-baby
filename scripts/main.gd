@@ -2,17 +2,26 @@ extends Node2D
 
 @export var second_floor_enemy_scene: PackedScene
 var camera_speed: float = 3.0
+var elapsed_time: float = 0.0
+var timer_running: bool = 0.0
 
 func _ready() -> void:
 	$Enemy.disable()
 	$Hud/FullscreenMessageControl.visible = false
+	start_timer()
 	if not GameState.intro_played:
 		await $Hud.play_fullscreen_intro_message()
 		$Hud.play_intro_dialogue()
 		$Baby/AnimatedSprite2D.flip_h = true
+	if GameState.game_beaten:
+		$Hud/TimerLabel.visible = true
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	if timer_running:
+		elapsed_time += delta
+		update_time_label()
+	
 	if GameState.intro_played and Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 
@@ -33,6 +42,23 @@ func victory_sequence() -> void:
 
 func defeat_sequence() -> void:
 	$Hud/DialogueController.play_defeat_dialogue()
+
+
+func start_timer() -> void:
+	elapsed_time = 0.0
+	timer_running = true
+
+
+func stop_timer() -> void:
+	timer_running = false
+
+
+func update_time_label() -> void:
+	var minutes := int(elapsed_time) / 60
+	var seconds := int(elapsed_time) % 60
+	var hundreths := int((elapsed_time - int(elapsed_time)) * 100)
+	$Hud/TimerLabel.text = ("TIME: " + "%02d:%02d:%02d" % [minutes, seconds, hundreths])
+
 
 func _on_baby_milk_amount_changed(new_milk_amount: int) -> void:
 	$Hud.update_milk_amount(new_milk_amount)
@@ -56,12 +82,20 @@ func _on_hud_dialogue_finished(dialogue_title: String) -> void:
 		$MusicPlayer/BossMusic.play()
 	elif dialogue_title == "victory":
 		$Enemy/AnimatedSprite2D.play("death_part_two")
-		$Hud/DialogueController.play_victory_credits_dialogue()
+		if not GameState.game_beaten:
+			GameState.game_beaten = true
+			$Hud/DialogueController.play_victory_credits_dialogue()
+		else:
+			$Hud/DialogueController.play_victory_credits_alternate_dialogue()
+	elif dialogue_title == "victory credits" or dialogue_title == "victory credits alternate":
+		$Hud/ReplayPrompt.visible = true
 
 
 func _on_enemy_health_changed(new_health: int) -> void:
 	$Hud.update_boss_health_bar(new_health)
 	if (new_health <= 0):
+		stop_timer()
+		$Hud/TimerLabel.visible = true
 		victory_sequence()
 
 
@@ -77,6 +111,7 @@ func _on_enemy_sprite_finished(sprite_name: String) -> void:
 	if sprite_name == "death_part_one":
 		$Hud/DialogueController.play_victory_dialogue()
 	if sprite_name == "death_part_two":
+		$MusicPlayer/BackgroundMusic.play()
 		await move_camera_to_position($Baby, camera_speed)
 		$Baby.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 		$Baby.velocity = Vector2.ZERO

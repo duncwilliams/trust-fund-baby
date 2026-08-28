@@ -9,7 +9,7 @@ var current_tween: Tween
 var advance_prompt_timer: SceneTreeTimer
 var auto_advance_timer: SceneTreeTimer
 var intro_lines: Array[String] = [
-	"Oh look, it's a dumb ass baby.",
+	"Oh look, it's a dumb baby.",
 	"Hey, moron, things aren’t all goo-goo and gah-gah out here, okay?",
 	"This is the real world so listen up!",
 	"A mighty trust fund was passed to you by your parents.",
@@ -40,7 +40,16 @@ var victory_credits_lines: Array[String] = [
 	"",
 	"thank you for playing our game :)",
 	"we hope you enjoyed playing it as much as we enjoyed making it",
-	"comment your fastest time below!"
+	"you have unlocked a permanent visible timer for future replays",
+	"comment your fastest time below!",
+]
+var victory_credits_lines_alternate: Array[String] = [
+	"You did it again baby. You clever son of a gun.",
+	"A baby like you is hard to find.",
+	"Enjoy your boundless benjamins!",
+	"",
+	"thanks again for playing our game :)",
+	"comment your fastest time below!",
 ]
 var current_dialogue_title: String = ""
 var current_lines: Array[String] = []
@@ -80,6 +89,13 @@ func play_victory_credits_dialogue() -> void:
 	await get_tree().create_timer(2.0).timeout
 	current_dialogue_title = "victory credits"
 	current_lines = victory_credits_lines
+	play_lines_auto()
+
+
+func play_victory_credits_alternate_dialogue() -> void:
+	await get_tree().create_timer(2.0).timeout
+	current_dialogue_title = "victory credits alternate"
+	current_lines = victory_credits_lines_alternate
 	play_lines_auto()
 
 
@@ -128,7 +144,7 @@ func display_next_line_auto(index: int) -> void:
 
 func line_is_fully_typed() -> void:
 	still_typing = false
-	advance_prompt_timer = get_tree().create_timer(3.0)
+	advance_prompt_timer = get_tree().create_timer(2.5)
 	advance_prompt_timer.timeout.connect(prompt_timer_timed_out)
 
 
