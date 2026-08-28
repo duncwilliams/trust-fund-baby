@@ -5,9 +5,5 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("point")
 
 
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	$AnimatedSprite2D.play("idle")

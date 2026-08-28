@@ -694,6 +694,7 @@ animations = [{
 }]
 
 [node name="Hud" type="CanvasLayer" unique_id=1539706795]
+process_mode = 3
 script = ExtResource("1_ahhtf")
 
 [node name="HeartsControl" type="Control" parent="." unique_id=1924606019]
@@ -708,7 +709,7 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 process_mode = 3
 position = Vector2(159, 60)
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_pwa8h")
 animation = &"full_hearts"
 autoplay = "full_hearts"
@@ -739,7 +740,9 @@ offset_right = -34.0
 offset_bottom = -127.000015
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 36
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 34
 text = "MILK METER™ "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -758,6 +761,8 @@ offset_right = 37.0
 offset_bottom = 76.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 48
 text = "100"
 horizontal_alignment = 1
@@ -765,29 +770,93 @@ vertical_alignment = 1
 
 [node name="RestartPrompt" type="Label" parent="." unique_id=259127323]
 unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -519.0
+offset_top = 144.0
+offset_right = -79.0
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "use a and d to crawl
+or
+press r to restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefeatRespawnPrompt" type="Label" parent="." unique_id=1371290782]
+unique_name_in_owner = true
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -194.0
-offset_top = -20.5
-offset_right = 194.0
-offset_bottom = 20.5
+offset_left = -220.0
+offset_top = -64.5
+offset_right = 220.0
+offset_bottom = 64.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 32
-text = "Press R to Restart"
+text = "press r to restart"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReplayPrompt" type="Label" parent="." unique_id=542436786]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -527.0
+offset_top = 141.0
+offset_right = -87.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "press r to replay"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1689840301]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -316.0
+offset_top = -13.0
+offset_right = 123.99902
+offset_bottom = 122.53999
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "TIME: 00:00:00"
 vertical_alignment = 1
 
 [node name="DialogueController" parent="." unique_id=1229814285 instance=ExtResource("2_oo0fn")]
 unique_name_in_owner = true
 
 [node name="BossBarControl" type="Control" parent="." unique_id=332025002]
-visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -819,8 +888,8 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 1)
 mouse_filter = 2
-max_value = 400.0
-value = 400.0
+max_value = 600.0
+value = 600.0
 texture_under = ExtResource("3_6fi6k")
 texture_progress = ExtResource("4_uo2fv")
 
@@ -828,10 +897,51 @@ texture_progress = ExtResource("4_uo2fv")
 layout_mode = 0
 offset_left = -476.0
 offset_top = -62.0
-offset_right = 41.0
+offset_right = 521.0
 offset_bottom = -22.0
 theme_override_fonts/normal_font = ExtResource("14_eld54")
 theme_override_font_sizes/normal_font_size = 23
-text = "Kinsman Simeon, The Turncoat"
+text = "Kinsman Michael, The Morally Bad"
+
+[node name="FullscreenMessageControl" type="Control" parent="." unique_id=164448471]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="FullscreenMessageControl" unique_id=372140704]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29803923, 0.23529412, 0.33333334, 1)
+
+[node name="Label" type="Label" parent="FullscreenMessageControl" unique_id=1795917874]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -22.5
+offset_right = 158.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "playing in fullscreen is recommended
+for the best aiming experience"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartPromptTimer" type="Timer" parent="." unique_id=1565890890]
 
 [connection signal="dialogue_finished" from="DialogueController" to="." method="_on_dialogue_controller_dialogue_finished"]

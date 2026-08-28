@@ -18,21 +18,22 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("shoot_milk") and milk_amount > 0:
-		currently_firing = true
+	if $AnimatedSprite2D.visible:
+		if Input.is_action_pressed("shoot_milk") and milk_amount > 0:
+			currently_firing = true
 
-		fire_accumulator += shots_per_second * delta
-		while fire_accumulator >= 1.0:
-			fire_accumulator -= 1.0
-			shoot_milk()
+			fire_accumulator += shots_per_second * delta
+			while fire_accumulator >= 1.0:
+				fire_accumulator -= 1.0
+				shoot_milk()
 
-		drain_accumulator += drain_per_second * delta
-		while drain_accumulator >= 1.0 and milk_amount > 0:
-			drain_accumulator -= 1.0
-			drain_milk()
-	else:
-		currently_firing = false
-		fire_accumulator = 0.0
+			drain_accumulator += drain_per_second * delta
+			while drain_accumulator >= 1.0 and milk_amount > 0:
+				drain_accumulator -= 1.0
+				drain_milk()
+		else:
+			currently_firing = false
+			fire_accumulator = 0.0
 	
 	# sprite handling
 	if milk_amount == 100:

@@ -3,13 +3,31 @@
 [ext_resource type="Script" uid="uid://bfwi4h7pwsp8s" path="res://scripts/baby.gd" id="1_wpfv3"]
 [ext_resource type="Texture2D" uid="uid://djiuf7i4hc4b" path="res://art/custom/Big_Baby_Landing_2__Balloon.png" id="2_jhev3"]
 [ext_resource type="Texture2D" uid="uid://h54f6bm8tcal" path="res://art/custom/Big_Baby_2__Balloon.png" id="3_40ld7"]
+[ext_resource type="Texture2D" uid="uid://w4ixkvwepjc" path="res://art/custom/Baby_Crawl_left.png" id="3_cgpd6"]
 [ext_resource type="Texture2D" uid="uid://dajl85ohudcfi" path="res://art/custom/Baby_Damage.png" id="3_jhev3"]
 [ext_resource type="PackedScene" uid="uid://0aibwiyik5ip" path="res://scenes/bottle.tscn" id="3_ruhsn"]
+[ext_resource type="Texture2D" uid="uid://cksmtb2irw3rj" path="res://art/custom/Baby_Crawl.png" id="3_snfag"]
 [ext_resource type="Texture2D" uid="uid://doxusrna21qb6" path="res://art/custom/Baby_Defeat.png" id="4_40ld7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgpd6"]
 atlas = ExtResource("2_jhev3")
 region = Rect2(32, 0, 32, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvro6"]
+atlas = ExtResource("3_cgpd6")
+region = Rect2(0, 0, 40, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f03f1"]
+atlas = ExtResource("3_cgpd6")
+region = Rect2(40, 0, 40, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vagt"]
+atlas = ExtResource("3_snfag")
+region = Rect2(0, 0, 40, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22ru7"]
+atlas = ExtResource("3_snfag")
+region = Rect2(40, 0, 40, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0hrq"]
 atlas = ExtResource("3_jhev3")
@@ -135,6 +153,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bvro6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f03f1")
+}],
+"loop": false,
+"name": &"crawl_left",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vagt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22ru7")
+}],
+"loop": false,
+"name": &"crawl_right",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_m0hrq")
 }, {
 "duration": 1.0,
@@ -152,7 +192,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_unwpt")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage",
 "speed": 8.0
 }, {
@@ -248,6 +288,7 @@ size = Vector2(25, 29.5)
 [node name="Baby" type="CharacterBody2D" unique_id=1502936678 groups=["baby"]]
 z_index = 10
 scale = Vector2(2, 2)
+floor_max_angle = 0.06283186
 script = ExtResource("1_wpfv3")
 metadata/_edit_group_ = true
 
@@ -256,6 +297,7 @@ unique_name_in_owner = true
 process_mode = 3
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_c7awe")
+animation = &"crawl_right"
 autoplay = "default"
 
 [node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]

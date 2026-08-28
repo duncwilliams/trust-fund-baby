@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://unq8c6du1t4s" path="res://art/custom/Traitor_Damage.png" id="2_xwavj"]
 [ext_resource type="Texture2D" uid="uid://fhe3d3wf6skt" path="res://art/custom/The_Traitor_Walk.png" id="3_4ra3w"]
 [ext_resource type="Shape2D" uid="uid://cgopdmcoxfhvm" path="res://shapes/enemy_polygon.tres" id="4_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://bkrv76aayrv7t" path="res://art/custom/The_Traitor_Idle.png" id="4_nenq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qiusc"]
 atlas = ExtResource("2_xwavj")
@@ -139,6 +140,14 @@ region = Rect2(832, 64, 64, 64)
 atlas = ExtResource("2_c4w8v")
 region = Rect2(896, 64, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmgde"]
+atlas = ExtResource("4_nenq2")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn1pv"]
+atlas = ExtResource("4_nenq2")
+region = Rect2(32, 0, 32, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
 atlas = ExtResource("2_4ra3w")
 region = Rect2(0, 0, 64, 64)
@@ -257,6 +266,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0lg75")
+}],
+"loop": false,
+"name": &"death_part_one",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lg75")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lsnsy")
@@ -289,8 +306,19 @@ animations = [{
 "texture": SubResource("AtlasTexture_vab5u")
 }],
 "loop": false,
-"name": &"death",
+"name": &"death_part_two",
 "speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmgde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn1pv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -309,7 +337,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_otmr2")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"point",
 "speed": 10.0
 }, {
 "frames": [{
@@ -335,8 +363,9 @@ scale = Vector2(4, 4)
 script = ExtResource("1_4ra3w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=634802606]
+process_mode = 3
 sprite_frames = SubResource("SpriteFrames_8qclf")
-animation = &"damage"
+animation = &"death_part_one"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=597369825 groups=["enemy"]]
@@ -349,4 +378,5 @@ shape = ExtResource("4_5uy6h")
 position = Vector2(-0.375, 3.75)
 shape = ExtResource("4_5uy6h")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
