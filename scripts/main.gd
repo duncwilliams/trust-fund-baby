@@ -119,4 +119,5 @@ func _on_enemy_sprite_finished(sprite_name: String) -> void:
 		await move_camera_to_position($Baby, camera_speed)
 		$Baby.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 		$Baby.velocity = Vector2.ZERO
+		$Map.start_spawning_money()
 		$MusicPlayer/ChildrenYayAudio.play()

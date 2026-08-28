@@ -51,10 +51,6 @@ drag_bottom_margin = 0.13
 [node name="Hud" parent="." unique_id=1539706795 instance=ExtResource("3_sugp2")]
 unique_name_in_owner = true
 
-[node name="BabySpawnPoint" type="Marker2D" parent="." unique_id=987459998]
-visible = false
-position = Vector2(382, 345)
-
 [node name="Enemy" parent="." unique_id=1988915028 instance=ExtResource("5_tefeu")]
 position = Vector2(1077, -3522)
 
