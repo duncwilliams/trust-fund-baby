@@ -861,7 +861,7 @@ offset_right = 521.0
 offset_bottom = -22.0
 theme_override_fonts/normal_font = ExtResource("14_eld54")
 theme_override_font_sizes/normal_font_size = 23
-text = "Your Morally Bad and Corrupt Brother, Who Wants to Steal Your Trust Fund Money"
+text = "Kinsman Michael, The Morally Bad"
 
 [node name="FullscreenMessageControl" type="Control" parent="." unique_id=164448471]
 process_mode = 3

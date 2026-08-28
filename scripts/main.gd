@@ -56,6 +56,7 @@ func _on_hud_dialogue_finished(dialogue_title: String) -> void:
 		$MusicPlayer/BossMusic.play()
 	elif dialogue_title == "victory":
 		$Enemy/AnimatedSprite2D.play("death_part_two")
+		$Hud/DialogueController.play_victory_credits_dialogue()
 
 
 func _on_enemy_health_changed(new_health: int) -> void:
