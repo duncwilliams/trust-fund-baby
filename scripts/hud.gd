@@ -24,6 +24,7 @@ func _ready() -> void:
 func update_milk_amount(new_milk_amount: int) -> void:
 	current_milk_amount = new_milk_amount
 	%MilkMeterStat.text = str(new_milk_amount)
+	$MilkMeterControl/MilkMeterBar.value = new_milk_amount
 	if new_milk_amount == 0 and not in_boss_battle:
 		$RestartPromptTimer.start()  # restarts from full duration even if already running
 	else:
