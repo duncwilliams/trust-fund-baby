@@ -13,6 +13,7 @@ var fullscreen_fade_time: float = 1.0
 func _ready() -> void:
 	$RestartPrompt.visible = false
 	$DefeatRespawnPrompt.visible = false
+	$HeartsControl.visible = false
 
 
 func update_milk_amount(new_milk_amount: int) -> void:
@@ -78,6 +79,7 @@ func _on_dialogue_controller_dialogue_finished(dialogue_title: String) -> void:
 		dialogue_finished.emit(dialogue_title)
 		if dialogue_title == "second floor":
 			$BossBarControl.visible = true
+			$HeartsControl.visible = true
 			in_boss_battle = true
 		if dialogue_title == "victory":
 			$BossBarControl.visible = false
