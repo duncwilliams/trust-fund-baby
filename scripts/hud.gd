@@ -66,14 +66,6 @@ func play_fullscreen_intro_message():
 	$FullscreenMessageControl.queue_free()
 
 
-func play_intro_dialogue():
-	$DialogueController.play_intro_dialogue()
-
-
-func play_second_floor_dialogue():
-	$DialogueController.play_second_floor_dialogue()
-
-
 func update_boss_health_bar(new_health: int):
 	%BossHealthBar.value = new_health
 
@@ -85,7 +77,7 @@ func restart_prompt_timer_timeout() -> void:
 
 func _on_dialogue_controller_dialogue_finished(dialogue_title: String) -> void:
 		dialogue_finished.emit(dialogue_title)
-		if dialogue_title == "second floor":
+		if dialogue_title == "second floor" or dialogue_title == "second floor alternate":
 			$BossBarControl.visible = true
 			$HeartsControl.visible = true
 			in_boss_battle = true

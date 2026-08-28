@@ -9,22 +9,26 @@ var current_tween: Tween
 var advance_prompt_timer: SceneTreeTimer
 var auto_advance_timer: SceneTreeTimer
 var intro_lines: Array[String] = [
-	"Oh look, it's a dumb baby.",
-	"Hey, moron, things aren’t all goo-goo and gah-gah out here, okay?",
-	"This is the real world so listen up!",
-	"A mighty trust fund was passed to you by your parents.",
+	"Oh look, it's the baby.",
+	"Hey, kid, things aren’t all goo-goo and gah-gah right now. So listen up!",
+	"A mighty trust fund was passed down to you by your parents.",
 	"But your morally bad relatives are here to steal it from you!",
-	"You must escape through the attic and track down your relatives.",
-	"I'll hold them off, just go!"
+	"You must escape through the attic to elude your relatives and retain your trust fund.",
+	"Be careful, they are relentless. Trust no one!",
+	"I'll hold them off for now, just go!"
 ]
 var second_floor_lines: Array[String] = [
 	"Well, well, well",
 	"Didn't I tell your dumb ass not to trust anyone?",
 	"I am your morally bad and corrupt brother!",
-	"Our parents trapped me here to prevent me from escaping",
-	"And stealing your trust fund",
-	"But you and your dumb balloon bandolier freed me!",
-	"Sorry, loser, I can’t let you witness my grand heist."
+	"You walked or - milk-blasted - straight into my trap.",
+	"Escape through the attic? There's no windows or doors up here moron.",
+	"Mom and Dad left me nothing. They said I was too corrupt and morally bad.",
+	"Time for me to finally get my rightful share of the trust fund.",
+	"You and your dumb balloon bandolier are done for!"
+]
+var second_floor_lines_alternate: Array[String] = [
+	"let's get this over with"
 ]
 var victory_lines: Array[String] = [
 	"I cannot believe you have done this to me"
@@ -71,6 +75,12 @@ func play_intro_dialogue() -> void:
 func play_second_floor_dialogue() -> void:
 	current_dialogue_title = "second floor"
 	current_lines = second_floor_lines
+	play_lines()
+
+
+func play_second_floor_alternate_dialogue() -> void:
+	current_dialogue_title = "second floor alternate"
+	current_lines = second_floor_lines_alternate
 	play_lines()
 
 

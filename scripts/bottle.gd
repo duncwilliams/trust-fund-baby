@@ -13,7 +13,7 @@ var fire_accumulator: float = 0.0
 var drain_accumulator: float = 0.0
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	look_at(get_global_mouse_position())
 
 
