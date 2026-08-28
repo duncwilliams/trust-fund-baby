@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr0mjoxe7bhhc" path="res://scripts/bottle.gd" id="1_qr18b"]
 [ext_resource type="Texture2D" uid="uid://chf6q00tnb1an" path="res://art/custom/Milk_Bottle_levels-sheet_tweaked.png" id="2_qr18b"]
+[ext_resource type="AudioStream" uid="uid://brliel44dbxer" path="res://audio/sfx/1_c4.wav" id="3_emwc0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emwc0"]
 atlas = ExtResource("2_qr18b")
@@ -93,3 +94,6 @@ animation = &"1_plus"
 unique_name_in_owner = true
 position = Vector2(15, 0)
 rotation = 1.5707964
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=365437799]
+stream = ExtResource("3_emwc0")

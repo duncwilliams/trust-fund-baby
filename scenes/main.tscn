@@ -55,10 +55,6 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(382, 345)
 
-[node name="SecondFloorEnemySpawnPoint" type="Marker2D" parent="." unique_id=1066116042]
-unique_name_in_owner = true
-position = Vector2(963, -3580)
-
 [node name="Enemy" parent="." unique_id=1988915028 instance=ExtResource("5_tefeu")]
 position = Vector2(1077, -3522)
 

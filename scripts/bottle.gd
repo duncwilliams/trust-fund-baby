@@ -67,6 +67,7 @@ func shoot_milk() -> void:
 	var milk_launch_angle = Vector2.RIGHT.rotated(rotation)
 	milk.launch(milk_launch_angle, milk_launch_speed)
 	shot_milk.emit(milk_launch_angle)
+	$AudioStreamPlayer2D.play()
 
 
 func drain_milk() -> void:
