@@ -1044,13 +1044,13 @@ position = Vector2(72, -761)
 position = Vector2(1852, -1340)
 
 [node name="Carton4" parent="Cartons" unique_id=1461498588 instance=ExtResource("2_paxxb")]
-position = Vector2(1382, -2302)
+position = Vector2(1399, -2302)
 
 [node name="Carton12" parent="Cartons" unique_id=1754343104 instance=ExtResource("2_paxxb")]
-position = Vector2(1474, -2302)
+position = Vector2(1516, -2302)
 
 [node name="Carton11" parent="Cartons" unique_id=3664744 instance=ExtResource("2_paxxb")]
-position = Vector2(1285, -2301)
+position = Vector2(1283, -2301)
 
 [node name="Carton6" parent="Cartons" unique_id=1501727220 instance=ExtResource("2_paxxb")]
 position = Vector2(1283, -2784)
@@ -1140,7 +1140,7 @@ position = Vector2(156, 351.00003)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_mlgqr")
 autoplay = "default"
-frame_progress = 0.7076188
+frame_progress = 0.84465903
 flip_h = true
 
 [node name="Friend" parent="." unique_id=1435211521 instance=ExtResource("7_nakos")]

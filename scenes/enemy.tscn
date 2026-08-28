@@ -266,6 +266,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0lg75")
+}],
+"loop": false,
+"name": &"death_part_one",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lg75")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lsnsy")
@@ -298,7 +306,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vab5u")
 }],
 "loop": false,
-"name": &"death",
+"name": &"death_part_two",
 "speed": 9.0
 }, {
 "frames": [{
@@ -357,7 +365,7 @@ script = ExtResource("1_4ra3w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=634802606]
 process_mode = 3
 sprite_frames = SubResource("SpriteFrames_8qclf")
-animation = &"idle"
+animation = &"death_part_one"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=597369825 groups=["enemy"]]

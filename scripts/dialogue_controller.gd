@@ -103,7 +103,7 @@ func prompt_timer_timed_out() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed() and not event is InputEventMouseMotion and listening_for_input:
-		if (advance_prompt_timer != null):
+		if advance_prompt_timer != null and advance_prompt_timer.timeout.is_connected(prompt_timer_timed_out):
 			advance_prompt_timer.timeout.disconnect(prompt_timer_timed_out)
 		$AdvanceDialogueLabel.visible = false
 		if still_typing:

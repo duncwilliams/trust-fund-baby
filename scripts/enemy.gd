@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal health_changed(new_health: int)
+signal sprite_finished(sprite_name: String)
 
 @onready var baby: Node2D = get_tree().get_first_node_in_group("baby")
 var speed: float = 3.5
@@ -73,6 +74,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	sprite_finished.emit($AnimatedSprite2D.animation)
 	if $AnimatedSprite2D.animation == "damage":
 		animation_locked = false
 		await get_tree().create_timer(post_damage_anim_cooldown).timeout

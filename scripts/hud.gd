@@ -14,6 +14,7 @@ func _ready() -> void:
 	$RestartPrompt.visible = false
 	$DefeatRespawnPrompt.visible = false
 	$HeartsControl.visible = false
+	$BossBarControl.visible = false
 
 
 func update_milk_amount(new_milk_amount: int) -> void:

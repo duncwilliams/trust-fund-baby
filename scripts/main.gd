@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var second_floor_enemy_scene: PackedScene
-var enemy_defeat_camera_speed: float = 3.0
+var camera_speed: float = 3.0
 
 func _ready() -> void:
 	$Enemy.disable()
@@ -18,18 +18,17 @@ func _process(_delta: float) -> void:
 
 
 func move_camera_to_position(target: Node2D, camera_speed: float) -> void:
-	call_deferred("$Baby.process_mode", "Node.PROCESS_MODE_DISABLED")
-	call_deferred("$Enemy.process_mode", "Node.PROCESS_MODE_DISABLED")
+	$Baby.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+	$Enemy.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	var tween := create_tween()
 	tween.tween_property($Baby/Camera2D, "global_position", target.global_position, camera_speed)
 	await tween.finished
-	call_deferred("$Baby.process_mode", "Node.PROCESS_MODE_INHERIT")
 
 
 func victory_sequence() -> void:
 	$MusicPlayer/BossMusic.stop()
-	await move_camera_to_position($Enemy, enemy_defeat_camera_speed)
-	$Hud/DialogueController.play_victory_dialogue()
+	await move_camera_to_position($Enemy, camera_speed)
+	$Enemy/AnimatedSprite2D.play("death_part_one")
 
 
 func defeat_sequence() -> void:
@@ -56,7 +55,7 @@ func _on_hud_dialogue_finished(dialogue_title: String) -> void:
 		$Map.disable_invisible_walls()
 		$MusicPlayer/BossMusic.play()
 	elif dialogue_title == "victory":
-		$Enemy/AnimatedSprite2D.play("death")
+		$Enemy/AnimatedSprite2D.play("death_part_two")
 
 
 func _on_enemy_health_changed(new_health: int) -> void:
@@ -71,3 +70,12 @@ func _on_baby_took_damage(remaining_health: float) -> void:
 
 func _on_baby_was_defeated() -> void:
 	defeat_sequence()
+
+
+func _on_enemy_sprite_finished(sprite_name: String) -> void:
+	if sprite_name == "death_part_one":
+		$Hud/DialogueController.play_victory_dialogue()
+	if sprite_name == "death_part_two":
+		await move_camera_to_position($Baby, camera_speed)
+		$Baby.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
+		$Baby.velocity = Vector2.ZERO
