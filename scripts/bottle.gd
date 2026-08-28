@@ -53,6 +53,7 @@ func _physics_process(delta: float) -> void:
 func refill() -> void:
 	milk_amount = 100
 	milk_amount_changed.emit(milk_amount)
+	$MilkRefillAudio.play()
 
 
 func empty() -> void:
@@ -67,7 +68,7 @@ func shoot_milk() -> void:
 	var milk_launch_angle = Vector2.RIGHT.rotated(rotation)
 	milk.launch(milk_launch_angle, milk_launch_speed)
 	shot_milk.emit(milk_launch_angle)
-	$AudioStreamPlayer2D.play()
+	$ShootMilkAudio.play()
 
 
 func drain_milk() -> void:

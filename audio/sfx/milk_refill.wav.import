@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://brliel44dbxer"
-path="res://.godot/imported/1_c4.wav-d998897b077516c72dccbca26b5bea75.sample"
+uid="uid://c1fewy63do5cl"
+path="res://.godot/imported/milk_refill.wav-c048816f83ef43818de1c6ccff52c3b2.sample"
 
 [deps]
 
-source_file="res://audio/sfx/1_c4.wav"
-dest_files=["res://.godot/imported/1_c4.wav-d998897b077516c72dccbca26b5bea75.sample"]
+source_file="res://audio/sfx/milk_refill.wav"
+dest_files=["res://.godot/imported/milk_refill.wav-c048816f83ef43818de1c6ccff52c3b2.sample"]
 
 [params]
 

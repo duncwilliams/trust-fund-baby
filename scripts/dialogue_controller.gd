@@ -59,6 +59,7 @@ var still_typing: bool = false
 
 func _ready() -> void:
 	dialogue_text_label.text = ""
+	$AdvanceDialogueLabel.visible = false
 
 
 func play_intro_dialogue() -> void:
@@ -168,7 +169,7 @@ func auto_advance() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_pressed() and not event is InputEventMouseMotion and listening_for_input:
+	if event.is_action_pressed("advance_dialogue") and listening_for_input:
 		if advance_prompt_timer != null and advance_prompt_timer.timeout.is_connected(prompt_timer_timed_out):
 			advance_prompt_timer.timeout.disconnect(prompt_timer_timed_out)
 		$AdvanceDialogueLabel.visible = false
