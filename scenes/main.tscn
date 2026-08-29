@@ -9,6 +9,7 @@
 
 [node name="Main" type="Node2D" unique_id=246328731]
 script = ExtResource("1_jyhfs")
+playtesting = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=75541172]
 layer = -100
