@@ -25,16 +25,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -361.0
+offset_left = -310.0
 offset_top = -210.0
-offset_right = 430.0
+offset_right = 284.0
 offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
-theme_override_constants/outline_size = 16
-theme_override_font_sizes/normal_font_size = 32
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/normal_font_size = 24
 text = "you stupid little baby I will destroy you!"
 
 [node name="AdvanceDialogueLabel" type="Label" parent="." unique_id=2136933877]
@@ -54,7 +54,7 @@ vertical_alignment = 1
 
 [node name="BossBlipSFX" type="AudioStreamPlayer" parent="." unique_id=1961381202]
 stream = ExtResource("2_avekh")
-volume_db = -2.2
+volume_db = -6.2
 
 [node name="BlipTimer" type="Timer" parent="." unique_id=689140526]
 wait_time = 0.1

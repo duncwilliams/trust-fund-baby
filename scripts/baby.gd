@@ -116,9 +116,9 @@ func defeat():
 func play_squash() -> void:
 	if squash_tween:
 		squash_tween.kill()
-	$AnimatedSprite2D.scale = Vector2(1.2, 0.8)
+	$AnimatedSprite2D.scale = Vector2(1.1, 0.9)
 	squash_tween = create_tween()
-	squash_tween.tween_property($AnimatedSprite2D, "scale", Vector2.ONE, 0.7).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	squash_tween.tween_property($AnimatedSprite2D, "scale", Vector2.ONE, 0.6).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

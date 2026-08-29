@@ -65,6 +65,7 @@ func take_damage() -> void:
 			animation_locked = true
 			ready_for_damage_anim = false
 			$AnimatedSprite2D.play("damage")
+			$BossDamageAudio.pitch_scale = randf_range(0.9, 1.0)
 			$BossDamageAudio.play()
 			velocity = Vector2.ZERO
 		
