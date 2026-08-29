@@ -26,6 +26,13 @@ GameState="*uid://4judk08vehv1"
 [display]
 
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://bkywo8ps6t7vn"
+mouse_cursor/custom_image_hotspot=Vector2(24, 24)
+
+[editor]
+
+movie_writer/video_quality=1.0
+movie_writer/movie_file="C:/Users/dunca/Videos/trust_fund_baby_clips/trust_fund_baby_gameplay.avi"
 
 [global_group]
 
