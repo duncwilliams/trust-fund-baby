@@ -1062,6 +1062,9 @@ position = Vector2(387, -6584)
 [node name="Carton15" parent="Cartons" unique_id=403004405 instance=ExtResource("2_paxxb")]
 position = Vector2(1176, -7673)
 
+[node name="Carton18" parent="Cartons" unique_id=447307749 instance=ExtResource("2_paxxb")]
+position = Vector2(1772, -7673)
+
 [node name="Carton7" parent="Cartons" unique_id=2067685460 instance=ExtResource("2_paxxb")]
 position = Vector2(-760, -3061)
 
