@@ -35,7 +35,7 @@ metadata/_edit_lock_ = true
 
 [node name="Baby" parent="." unique_id=1502936678 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true
-position = Vector2(1720, -1386)
+position = Vector2(-1055, -4407)
 
 [node name="Camera2D" type="Camera2D" parent="Baby" unique_id=1711883797]
 process_mode = 3
@@ -52,9 +52,10 @@ drag_bottom_margin = 0.13
 unique_name_in_owner = true
 
 [node name="Enemy" parent="." unique_id=1988915028 instance=ExtResource("5_tefeu")]
-position = Vector2(1077, -4804)
+position = Vector2(1083, -10113)
 
-[node name="PlaceholderBabySpawn" type="Marker2D" parent="." unique_id=1803959226]
+[node name="BabySpawnPoint" type="Marker2D" parent="." unique_id=1803959226]
+unique_name_in_owner = true
 position = Vector2(502, 479)
 
 [node name="MusicPlayer" parent="." unique_id=343938540 instance=ExtResource("7_o6xl0")]

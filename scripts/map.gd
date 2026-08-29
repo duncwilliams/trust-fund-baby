@@ -23,7 +23,8 @@ func start_spawning_money() -> void:
 func spawn_money() -> void:
 	var instance = money.instantiate()
 	get_tree().current_scene.add_child(instance)
-	instance.global_position = Vector2(randf_range(%CashSpawnLeftMarker.position.x, %CashSpawnRightMarker.position.x), randf_range(%CashSpawnLeftMarker.position.y, %CashSpawnRightMarker.position.y))
+	instance.global_position = Vector2(randf_range($BossRoom/CashSpawnLeftMarker.global_position.x, $BossRoom/CashSpawnRightMarker.global_position.x), randf_range($BossRoom/CashSpawnLeftMarker.global_position.y, $BossRoom/CashSpawnRightMarker.global_position.y))
+	print("spawned a stack of money")
 
 func _on_second_floor_trigger_area_entered(area: Area2D) -> void:
 	if area.is_in_group("baby"):
