@@ -6,7 +6,7 @@ signal was_defeated()
 
 @onready var bottle: Node2D = %Bottle
 var thrust_force: float = 16
-var max_velocity: float = 560
+var max_velocity: float = 567.5
 var health: float = 4.0
 var invincible: bool = false
 var i_frames_time: float = 1.5
