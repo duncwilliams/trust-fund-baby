@@ -105,19 +105,19 @@ rotation = 1.5707964
 
 [node name="ShootMilkAudio1" type="AudioStreamPlayer2D" parent="." unique_id=365437799]
 stream = SubResource("AudioStreamWAV_qr18b")
-volume_db = -9.734
+volume_db = -6.0
 
 [node name="ShootMilkAudio2" type="AudioStreamPlayer2D" parent="." unique_id=2022212533]
 stream = SubResource("AudioStreamWAV_qr18b")
-volume_db = -9.734
+volume_db = -5.0
 
 [node name="ShootMilkAudio3" type="AudioStreamPlayer2D" parent="." unique_id=1903032514]
 stream = SubResource("AudioStreamWAV_qr18b")
-volume_db = -11.23
+volume_db = -7.0
 
 [node name="ShootMilkAudio4" type="AudioStreamPlayer2D" parent="." unique_id=2051222916]
 stream = SubResource("AudioStreamWAV_qr18b")
-volume_db = -13.475
+volume_db = -6.0
 
 [node name="MilkRefillAudio" type="AudioStreamPlayer2D" parent="." unique_id=1946692859]
 stream = ExtResource("3_emwc0")

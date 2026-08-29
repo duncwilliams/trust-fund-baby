@@ -359,6 +359,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md484"]
+size = Vector2(13.25, 64.5)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1988915028 groups=["enemy"]]
 scale = Vector2(4, 4)
 script = ExtResource("1_4ra3w")
@@ -376,11 +379,12 @@ shape = ExtResource("4_5uy6h")
 [node name="Area2D" type="Area2D" parent="." unique_id=2029559478 groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=516583167 groups=["enemy"]]
-position = Vector2(-0.375, 3.75)
-shape = ExtResource("4_5uy6h")
+position = Vector2(-0.125, 0.25)
+shape = SubResource("RectangleShape2D_md484")
 
 [node name="BossDamageAudio" type="AudioStreamPlayer2D" parent="." unique_id=1114877058]
 stream = ExtResource("8_md484")
+volume_db = 3.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -32,8 +32,14 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta
 		
 		var direction := global_position.direction_to(baby.global_position)
-		# sprite orientation
-		$AnimatedSprite2D.flip_h = (direction.x > 0)
+		# sprite and collsion shape orientation
+		if (direction.x > 0):
+			$AnimatedSprite2D.flip_h = true
+			$CollisionShape2D.scale.x = 1
+		else:
+			$AnimatedSprite2D.flip_h = false
+			$CollisionShape2D.scale.x = -1
+		
 		velocity += direction * speed
 		velocity = velocity.limit_length(max_velocity)
 		move_and_slide()
@@ -59,6 +65,7 @@ func take_damage() -> void:
 			animation_locked = true
 			ready_for_damage_anim = false
 			$AnimatedSprite2D.play("damage")
+			$BossDamageAudio.pitch_scale = randf_range(0.9, 1.0)
 			$BossDamageAudio.play()
 			velocity = Vector2.ZERO
 		

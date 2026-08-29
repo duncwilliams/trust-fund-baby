@@ -5,11 +5,12 @@ signal took_damage(remaining_health: float)
 signal was_defeated()
 
 @onready var bottle: Node2D = %Bottle
-var thrust_force: float = 16
-var max_velocity: float = 560
+var squash_tween: Tween
+var thrust_force: float = 15.5
+var max_velocity: float = 562.5
 var health: float = 4.0
 var invincible: bool = false
-var i_frames_time: float = 1.5
+var i_frames_time: float = 2.0
 var defeated: bool = false
 var crawl_speed: float = 30
 var crawling: bool = false
@@ -111,9 +112,19 @@ func defeat():
 	await get_tree().create_timer(pre_death_delay).timeout
 	$AnimatedSprite2D.play("defeat")
 
+
+func play_squash() -> void:
+	if squash_tween:
+		squash_tween.kill()
+	$AnimatedSprite2D.scale = Vector2(1.1, 0.9)
+	squash_tween = create_tween()
+	squash_tween.tween_property($AnimatedSprite2D, "scale", Vector2.ONE, 0.6).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("map") and not animation_locked:
+	if body.is_in_group("map") and not animation_locked and is_on_floor():
 		$AnimatedSprite2D.play("collide")
+		play_squash()
 
 
 func _on_bottle_shot_milk(milk_launch_angle: Vector2) -> void:

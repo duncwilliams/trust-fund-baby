@@ -58,6 +58,7 @@ var current_dialogue_title: String = ""
 var current_lines: Array[String] = []
 var line_index: int = 0
 var still_typing: bool = false
+var have_audio: bool = false
 
 
 func _ready() -> void:
@@ -66,36 +67,42 @@ func _ready() -> void:
 
 
 func play_intro_dialogue() -> void:
+	have_audio = true
 	current_dialogue_title = "intro"
 	current_lines = intro_lines
 	play_lines()
 
 
 func play_second_floor_dialogue() -> void:
+	have_audio = true
 	current_dialogue_title = "second floor"
 	current_lines = second_floor_lines
 	play_lines()
 
 
 func play_second_floor_alternate_dialogue() -> void:
+	have_audio = true
 	current_dialogue_title = "second floor alternate"
 	current_lines = second_floor_lines_alternate
 	play_lines()
 
 
 func play_victory_dialogue() -> void:
+	have_audio = true
 	current_dialogue_title = "victory"
 	current_lines = victory_lines
 	play_lines()
 
 
 func play_defeat_dialogue() -> void:
+	have_audio = true
 	current_dialogue_title = "defeat"
 	current_lines = defeat_lines
 	play_lines()
 
 
 func play_victory_credits_dialogue() -> void:
+	have_audio = false
 	await get_tree().create_timer(2.0).timeout
 	current_dialogue_title = "victory credits"
 	current_lines = victory_credits_lines
@@ -103,6 +110,7 @@ func play_victory_credits_dialogue() -> void:
 
 
 func play_victory_credits_alternate_dialogue() -> void:
+	have_audio = false
 	await get_tree().create_timer(2.0).timeout
 	current_dialogue_title = "victory credits alternate"
 	current_lines = victory_credits_lines_alternate
@@ -136,6 +144,8 @@ func display_next_line(index: int) -> void:
 	dialogue_text_label.text = current_lines[index]
 	dialogue_text_label.visible_ratio = 0.0
 	still_typing = true
+	if have_audio:
+		$BlipTimer.start()
 	
 	current_tween = create_tween()
 	current_tween.tween_property(dialogue_text_label, "visible_ratio", 1.0, current_lines[index].length() * 0.03)
@@ -146,6 +156,8 @@ func display_next_line_auto(index: int) -> void:
 	dialogue_text_label.text = current_lines[index]
 	dialogue_text_label.visible_ratio = 0.0
 	still_typing = true
+	if have_audio:
+		$BlipTimer.start()
 	
 	current_tween = create_tween()
 	current_tween.tween_property(dialogue_text_label, "visible_ratio", 1.0, current_lines[index].length() * 0.03)
@@ -154,11 +166,13 @@ func display_next_line_auto(index: int) -> void:
 
 func line_is_fully_typed() -> void:
 	still_typing = false
+	$BlipTimer.stop()
 	advance_prompt_timer = get_tree().create_timer(2.5)
 	advance_prompt_timer.timeout.connect(prompt_timer_timed_out)
 
 
 func line_is_fully_typed_auto() -> void:
+	$BlipTimer.stop()
 	auto_advance_timer = get_tree().create_timer(3.0)
 	auto_advance_timer.timeout.connect(auto_advance)
 
@@ -197,3 +211,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				#stop listening for inputs
 				listening_for_input = false
 				visible = false
+
+
+func _on_blip_timer_timeout() -> void:
+		$BossBlipSFX.pitch_scale = randf_range(0.9, 1.1)
+		$BossBlipSFX.play()

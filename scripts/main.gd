@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var second_floor_enemy_scene: PackedScene
 @export var playtesting: bool = false
 var camera_speed: float = 3.0
 var elapsed_time: float = 0.0
