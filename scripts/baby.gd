@@ -5,11 +5,11 @@ signal took_damage(remaining_health: float)
 signal was_defeated()
 
 @onready var bottle: Node2D = %Bottle
-var thrust_force: float = 16
-var max_velocity: float = 567.5
+var thrust_force: float = 15.5
+var max_velocity: float = 562.5
 var health: float = 4.0
 var invincible: bool = false
-var i_frames_time: float = 1.5
+var i_frames_time: float = 2.0
 var defeated: bool = false
 var crawl_speed: float = 30
 var crawling: bool = false
