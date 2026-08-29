@@ -2,7 +2,6 @@ extends Control
 
 signal dialogue_finished(dialogue_title: String)
 
-@export var playtesting: bool = false
 @onready var dialogue_text_label: RichTextLabel = %DialogueTextLabel
 var listening_for_input: bool = false
 var current_tween: Tween
@@ -115,7 +114,7 @@ func play_lines() -> void:
 	listening_for_input = true
 	
 	# shorten all dialogue if playtesting
-	if playtesting:
+	if GameState.playtesting:
 		current_lines = ["playtesting"]
 	
 	visible = true

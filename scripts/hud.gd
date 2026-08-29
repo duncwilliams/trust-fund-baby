@@ -56,15 +56,16 @@ func update_baby_health_amount(new_health_amount: float) -> void:
 
 
 func play_fullscreen_intro_message():
-	$FullscreenMessageControl.visible = true
-	get_tree().paused = true
-	await get_tree().create_timer(fullscreen_display_time).timeout
-	var tween := create_tween()
-	tween.tween_property($FullscreenMessageControl, "modulate:a", 0.0, fullscreen_fade_time)
-	await tween.finished
+	if not GameState.playtesting:
+		$FullscreenMessageControl.visible = true
+		get_tree().paused = true
+		await get_tree().create_timer(fullscreen_display_time).timeout
+		var tween := create_tween()
+		tween.tween_property($FullscreenMessageControl, "modulate:a", 0.0, fullscreen_fade_time)
+		await tween.finished
 
-	get_tree().paused = false
-	$FullscreenMessageControl.queue_free()
+		get_tree().paused = false
+		$FullscreenMessageControl.queue_free()
 
 
 func update_boss_health_bar(new_health: int):
