@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bywpro3sfemtg" path="res://art/custom/hearts/two_and_half_hearts.png" id="6_5n1hp"]
 [ext_resource type="Texture2D" uid="uid://cq2xp8y8n7xt7" path="res://art/custom/hearts/three_hearts.png" id="8_3swnk"]
 [ext_resource type="Texture2D" uid="uid://b6p2iqt52inxf" path="res://art/custom/hearts/two_hearts.png" id="10_qkknv"]
+[ext_resource type="Texture2D" uid="uid://dh21a777a37s3" path="res://art/custom/milk_meter_bottle_under_2.png" id="11_qkknv"]
+[ext_resource type="Texture2D" uid="uid://c1fejef3vifyc" path="res://art/custom/milk_meter_bottle_progress_2.png" id="12_uxdf7"]
 [ext_resource type="FontFile" uid="uid://bbw1min3f4xv0" path="res://fonts/EBGaramond-VariableFont_wght.ttf" id="14_eld54"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eld54"]
@@ -734,35 +736,56 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -336.0
-offset_top = -174.00002
-offset_right = -34.0
-offset_bottom = -127.000015
+offset_left = -335.0
+offset_top = -196.00002
+offset_right = -88.0
+offset_bottom = -149.00002
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 34
-text = "MILK METER™ "
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 26
+text = "MILK METER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MilkMeterStat" type="Label" parent="MilkMeterControl/MilkMeterTitle" unique_id=1233565953]
-unique_name_in_owner = true
+[node name="MilkMeterBar" type="TextureProgressBar" parent="MilkMeterControl" unique_id=1691918940]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -97.0
-offset_top = 14.5
-offset_right = 37.0
-offset_bottom = 76.5
+offset_left = -370.0
+offset_top = -18.0
+offset_right = -330.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0.29803923, 0.23529412, 0.33333334, 1)
-theme_override_constants/outline_size = 12
+rotation = -1.5707964
+scale = Vector2(5, 5)
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("11_qkknv")
+texture_progress = ExtResource("12_uxdf7")
+texture_progress_offset = Vector2(0, 11)
+
+[node name="MilkMeterStat" type="Label" parent="MilkMeterControl" unique_id=1233565953]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -135.0
+offset_right = -128.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
 theme_override_font_sizes/font_size = 48
 text = "100"
 horizontal_alignment = 1

@@ -11,9 +11,12 @@ var currently_firing: bool = false
 var milk_amount: int = 100
 var fire_accumulator: float = 0.0
 var drain_accumulator: float = 0.0
+@onready var shoot_milk_players: Array[AudioStreamPlayer2D] = [
+	$ShootMilkAudio1, $ShootMilkAudio2, $ShootMilkAudio3, $ShootMilkAudio4
+]
+var next_shoot_milk_index: int = 0
 
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	look_at(get_global_mouse_position())
 
 
@@ -53,6 +56,7 @@ func _physics_process(delta: float) -> void:
 func refill() -> void:
 	milk_amount = 100
 	milk_amount_changed.emit(milk_amount)
+	$MilkRefillAudio.play()
 
 
 func empty() -> void:
@@ -67,6 +71,14 @@ func shoot_milk() -> void:
 	var milk_launch_angle = Vector2.RIGHT.rotated(rotation)
 	milk.launch(milk_launch_angle, milk_launch_speed)
 	shot_milk.emit(milk_launch_angle)
+	if milk_amount % 2 == 0:
+		play_shoot_milk_audio()
+
+
+func play_shoot_milk_audio():
+	var player = shoot_milk_players[next_shoot_milk_index]
+	player.play()
+	next_shoot_milk_index = (next_shoot_milk_index + 1) % shoot_milk_players.size()
 
 
 func drain_milk() -> void:

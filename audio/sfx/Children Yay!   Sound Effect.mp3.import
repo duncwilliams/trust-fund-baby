@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2td4neoks418"
+path="res://.godot/imported/Children Yay!   Sound Effect.mp3-ec9e3bc4ce55c1862e92ecab23707bee.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Children Yay!   Sound Effect.mp3"
+dest_files=["res://.godot/imported/Children Yay!   Sound Effect.mp3-ec9e3bc4ce55c1862e92ecab23707bee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

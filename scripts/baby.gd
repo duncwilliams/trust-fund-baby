@@ -87,6 +87,7 @@ func take_damage():
 		invincible = true
 		health -= 0.5
 		took_damage.emit(health)
+		$DamageAudio.play()
 		if health <= 0.0:
 			defeat()
 		else:

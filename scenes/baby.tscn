@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0aibwiyik5ip" path="res://scenes/bottle.tscn" id="3_ruhsn"]
 [ext_resource type="Texture2D" uid="uid://cksmtb2irw3rj" path="res://art/custom/Baby_Crawl.png" id="3_snfag"]
 [ext_resource type="Texture2D" uid="uid://doxusrna21qb6" path="res://art/custom/Baby_Defeat.png" id="4_40ld7"]
+[ext_resource type="AudioStream" uid="uid://77gwc4n4wbfq" path="res://audio/sfx/baby_damage.wav" id="9_7xqix"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgpd6"]
 atlas = ExtResource("2_jhev3")
@@ -297,7 +298,6 @@ unique_name_in_owner = true
 process_mode = 3
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_c7awe")
-animation = &"crawl_right"
 autoplay = "default"
 
 [node name="Bottle" parent="." unique_id=26694295 instance=ExtResource("3_ruhsn")]
@@ -317,6 +317,10 @@ visible = false
 [node name="AreaCollision" type="CollisionShape2D" parent="Area2D" unique_id=1391482106]
 position = Vector2(0, 1.75)
 shape = SubResource("RectangleShape2D_k8j53")
+
+[node name="DamageAudio" type="AudioStreamPlayer2D" parent="." unique_id=935947987]
+stream = ExtResource("9_7xqix")
+volume_db = 7.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="milk_amount_changed" from="Bottle" to="." method="_on_bottle_milk_amount_changed"]

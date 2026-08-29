@@ -11,7 +11,7 @@ func _ready() -> void:
 	start_timer()
 	if not GameState.intro_played:
 		await $Hud.play_fullscreen_intro_message()
-		$Hud.play_intro_dialogue()
+		$Hud/DialogueController.play_intro_dialogue()
 		$Baby/AnimatedSprite2D.flip_h = true
 	if GameState.game_beaten:
 		$Hud/TimerLabel.visible = true
@@ -26,11 +26,11 @@ func _process(delta: float) -> void:
 		get_tree().reload_current_scene()
 
 
-func move_camera_to_position(target: Node2D, camera_speed: float) -> void:
+func move_camera_to_position(target: Node2D, camera_move_speed: float) -> void:
 	$Baby.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	$Enemy.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	var tween := create_tween()
-	tween.tween_property($Baby/Camera2D, "global_position", target.global_position, camera_speed)
+	tween.tween_property($Baby/Camera2D, "global_position", target.global_position, camera_move_speed)
 	await tween.finished
 
 
@@ -54,6 +54,7 @@ func stop_timer() -> void:
 
 
 func update_time_label() -> void:
+	@warning_ignore("integer_division")
 	var minutes := int(elapsed_time) / 60
 	var seconds := int(elapsed_time) % 60
 	var hundreths := int((elapsed_time - int(elapsed_time)) * 100)
@@ -69,7 +70,10 @@ func _on_map_arrived_at_second_floor() -> void:
 	$MusicPlayer/BackgroundMusic.stop()
 	await get_tree().create_timer(2.0).timeout
 	$Enemy.enable()
-	$Hud.play_second_floor_dialogue()
+	if not GameState.game_beaten:
+		$Hud/DialogueController.play_second_floor_dialogue()
+	else:
+		$Hud/DialogueController.play_second_floor_alternate_dialogue()
 	$Baby.refill_bottle()
 
 
@@ -77,7 +81,7 @@ func _on_hud_dialogue_finished(dialogue_title: String) -> void:
 	if dialogue_title == "intro":
 		$Map/Friend/AnimatedSprite2D.play("point")
 		GameState.intro_played = true
-	elif dialogue_title == "second floor":
+	elif dialogue_title == "second floor" or dialogue_title == "second floor alternate":
 		$Map.disable_invisible_walls()
 		$MusicPlayer/BossMusic.play()
 	elif dialogue_title == "victory":
@@ -115,3 +119,5 @@ func _on_enemy_sprite_finished(sprite_name: String) -> void:
 		await move_camera_to_position($Baby, camera_speed)
 		$Baby.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 		$Baby.velocity = Vector2.ZERO
+		$Map.start_spawning_money()
+		$MusicPlayer/ChildrenYayAudio.play()

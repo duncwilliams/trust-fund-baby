@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://78n1hos3lhtx" path="res://scripts/map.gd" id="1_2klcf"]
 [ext_resource type="Texture2D" uid="uid://csyob0kr852q" path="res://art/assets/pixel_frog_kings_and_pigs/Terrain (32x32).png" id="1_4xfga"]
+[ext_resource type="PackedScene" uid="uid://clctb61yy3qr0" path="res://scenes/money.tscn" id="2_jh32y"]
 [ext_resource type="PackedScene" uid="uid://ckonlikqnpmml" path="res://scenes/carton.tscn" id="2_paxxb"]
 [ext_resource type="Texture2D" uid="uid://c2wsylqc3fqoh" path="res://art/custom/diagonal_arrow.png" id="3_gldc4"]
 [ext_resource type="Texture2D" uid="uid://dmqevkbt8jdmh" path="res://art/custom/cardinal_arrows.png" id="4_0cso3"]
@@ -474,7 +475,8 @@ texture = ExtResource("1_4xfga")
 17:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_gldc4"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_paxxb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2klcf"]
@@ -941,7 +943,8 @@ texture = ExtResource("1_4xfga")
 35:23/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_2lpho"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_2klcf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cso3"]
@@ -998,6 +1001,7 @@ animations = [{
 [node name="Map" type="Node2D" unique_id=1817902467 groups=["map"]]
 modulate = Color(0.91273814, 0.90737766, 0.9735089, 1)
 script = ExtResource("1_2klcf")
+money = ExtResource("2_jh32y")
 
 [node name="BackgroundTML" type="TileMapLayer" parent="." unique_id=1692144469]
 modulate = Color(1, 1, 1, 0.5529412)
@@ -1146,5 +1150,11 @@ flip_h = true
 
 [node name="Friend" parent="." unique_id=1435211521 instance=ExtResource("7_nakos")]
 position = Vector2(319, 387)
+
+[node name="CashSpawnLeftMarker" type="Marker2D" parent="." unique_id=514235237]
+position = Vector2(1099, -3626)
+
+[node name="CashSpawnRightMarker" type="Marker2D" parent="." unique_id=1603547355]
+position = Vector2(1698, -3894)
 
 [connection signal="area_entered" from="SecondFloorTrigger" to="." method="_on_second_floor_trigger_area_entered"]
