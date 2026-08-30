@@ -22,6 +22,7 @@ driver/output_latency=20
 [autoload]
 
 GameState="*uid://4judk08vehv1"
+MusicPlayer="*uid://dpv06ermcjg2p"
 
 [display]
 

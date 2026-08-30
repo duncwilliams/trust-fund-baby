@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://ce0h2p4pyj5l" path="res://scenes/hud.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bma0jh32ox7pj" path="res://scenes/map.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dxhgehgl2qp1" path="res://scenes/enemy.tscn" id="5_tefeu"]
-[ext_resource type="PackedScene" uid="uid://dpv06ermcjg2p" path="res://scenes/music_player.tscn" id="7_o6xl0"]
 
 [node name="Main" type="Node2D" unique_id=246328731]
 script = ExtResource("1_jyhfs")
@@ -57,8 +56,6 @@ position = Vector2(1083, -10113)
 [node name="BabySpawnPoint" type="Marker2D" parent="." unique_id=1803959226]
 unique_name_in_owner = true
 position = Vector2(502, 479)
-
-[node name="MusicPlayer" parent="." unique_id=343938540 instance=ExtResource("7_o6xl0")]
 
 [connection signal="arrived_at_second_floor" from="Map" to="." method="_on_map_arrived_at_second_floor"]
 [connection signal="milk_amount_changed" from="Baby" to="." method="_on_baby_milk_amount_changed"]

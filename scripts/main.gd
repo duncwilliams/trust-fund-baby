@@ -12,6 +12,14 @@ func _ready() -> void:
 		GameState.playtesting = false
 		$Baby.position = %BabySpawnPoint.position
 	
+	var background_music = MusicPlayer.get_node("BackgroundMusic")
+	var boss_music = MusicPlayer.get_node("BossMusic")
+	if boss_music.playing:
+		boss_music.stop()
+		background_music.play()
+	elif not background_music.playing:
+		background_music.play()
+	
 	$Enemy.disable()
 	$Hud/FullscreenMessageControl.visible = false
 	start_timer()
@@ -41,7 +49,7 @@ func move_camera_to_position(target: Node2D, camera_move_speed: float) -> void:
 
 
 func victory_sequence() -> void:
-	$MusicPlayer/BossMusic.stop()
+	MusicPlayer.fade_out_boss_music()
 	await move_camera_to_position($Enemy, camera_speed)
 	$Enemy/AnimatedSprite2D.play("death_part_one")
 
@@ -73,7 +81,7 @@ func _on_baby_milk_amount_changed(new_milk_amount: int) -> void:
 
 func _on_map_arrived_at_second_floor() -> void:
 	$Baby.empty_bottle()
-	$MusicPlayer/BackgroundMusic.stop()
+	MusicPlayer.fade_out_background_music()
 	await get_tree().create_timer(2.0).timeout
 	$Enemy.enable()
 	if not GameState.game_beaten:
@@ -89,7 +97,7 @@ func _on_hud_dialogue_finished(dialogue_title: String) -> void:
 		GameState.intro_played = true
 	elif dialogue_title == "second floor" or dialogue_title == "second floor alternate":
 		$Map.disable_invisible_walls()
-		$MusicPlayer/BossMusic.play()
+		MusicPlayer.get_node("BossMusic").play()
 	elif dialogue_title == "victory":
 		$Enemy/AnimatedSprite2D.play("death_part_two")
 		if not GameState.game_beaten:
@@ -121,9 +129,9 @@ func _on_enemy_sprite_finished(sprite_name: String) -> void:
 	if sprite_name == "death_part_one":
 		$Hud/DialogueController.play_victory_dialogue()
 	if sprite_name == "death_part_two":
-		$MusicPlayer/BackgroundMusic.play()
+		MusicPlayer.get_node("BackgroundMusic").play()
 		await move_camera_to_position($Baby, camera_speed)
 		$Baby.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 		$Baby.velocity = Vector2.ZERO
 		$Map.start_spawning_money()
-		$MusicPlayer/ChildrenYayAudio.play()
+		MusicPlayer.get_node("ChildrenYayAudio").play()
