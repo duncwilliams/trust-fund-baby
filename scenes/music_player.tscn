@@ -1,15 +1,14 @@
 [gd_scene format=3 uid="uid://dpv06ermcjg2p"]
 
+[ext_resource type="AudioStream" uid="uid://u0nxwni6m7xq" path="res://audio/music/boss_music.wav" id="1_l7xiw"]
 [ext_resource type="AudioStream" uid="uid://b61uqwph11jki" path="res://audio/music/background_music.wav" id="2_l7xiw"]
-[ext_resource type="AudioStream" uid="uid://8i6qplp54c6k" path="res://audio/music/6. Veil of Eternal Nightfall.mp3" id="2_qbjj0"]
 [ext_resource type="AudioStream" uid="uid://c2td4neoks418" path="res://audio/sfx/Children Yay!   Sound Effect.mp3" id="3_l7xiw"]
 
 [node name="MusicPlayer" type="Node" unique_id=343938540]
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="." unique_id=611102532]
-stream = ExtResource("2_qbjj0")
+stream = ExtResource("1_l7xiw")
 volume_db = -8.667
-parameters/looping = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=694715215]
 process_mode = 3
